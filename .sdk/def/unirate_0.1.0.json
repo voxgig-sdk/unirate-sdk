@@ -1,0 +1,260 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "UniRate API",
+    "description": "API for currency conversion and exchange rates with historical data",
+    "version": "1.0"
+  },
+  "basePath": "/",
+  "host": "api.unirateapi.com",
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "tags": [
+    { "name": "Currency", "description": "Current exchange rates and conversion operations" },
+    { "name": "Historical Currency", "description": "Historical exchange rates data (1999-2026)" },
+    { "name": "Commodity", "description": "Precious metals prices - Pro subscription required" },
+    { "name": "VAT Rates", "description": "VAT rates for countries" }
+  ],
+  "paths": {
+    "/api/rates": {
+      "get": {
+        "summary": "Get exchange rates",
+        "description": "Get exchange rates between currencies with optional amount conversion",
+        "tags": ["Currency"],
+        "operationId": "getRates",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication" },
+          { "name": "amount", "in": "query", "type": "number", "default": 1, "description": "Amount to convert" },
+          { "name": "from", "in": "query", "type": "string", "default": "USD", "description": "Base currency code" },
+          { "name": "to", "in": "query", "type": "string", "description": "Target currency code" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "Exchange rates retrieved successfully" },
+          "401": { "description": "Missing or invalid API key" },
+          "404": { "description": "Currency not found" }
+        }
+      }
+    },
+    "/api/convert": {
+      "get": {
+        "summary": "Convert currency",
+        "description": "Convert amount between currencies",
+        "tags": ["Currency"],
+        "operationId": "convertCurrency",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication" },
+          { "name": "amount", "in": "query", "type": "number", "default": 1, "description": "Amount to convert" },
+          { "name": "from", "in": "query", "type": "string", "default": "USD", "description": "Source currency code" },
+          { "name": "to", "in": "query", "type": "string", "required": true, "description": "Target currency code" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "Currency converted successfully" },
+          "400": { "description": "Invalid request parameters" },
+          "401": { "description": "Missing or invalid API key" },
+          "404": { "description": "Currency not found" }
+        }
+      }
+    },
+    "/api/currencies": {
+      "get": {
+        "summary": "List currencies",
+        "description": "List all available currencies",
+        "tags": ["Currency"],
+        "operationId": "listCurrencies",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "A list of available currencies" },
+          "401": { "description": "Missing or invalid API key" }
+        }
+      }
+    },
+    "/api/historical/rates": {
+      "get": {
+        "summary": "Get historical rates",
+        "description": "Get historical exchange rates for a specific date",
+        "tags": ["Historical Currency"],
+        "operationId": "getHistoricalRates",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication" },
+          { "name": "date", "in": "query", "type": "string", "required": true, "description": "Date in YYYY-MM-DD format" },
+          { "name": "amount", "in": "query", "type": "number", "default": 1, "description": "Amount to convert" },
+          { "name": "from", "in": "query", "type": "string", "default": "USD", "description": "Base currency code" },
+          { "name": "to", "in": "query", "type": "string", "description": "Target currency code" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "Historical exchange rates retrieved successfully" },
+          "400": { "description": "Invalid date format or missing date" },
+          "401": { "description": "Missing or invalid API key" },
+          "404": { "description": "No data available for the given date" }
+        }
+      }
+    },
+    "/api/historical/timeseries": {
+      "get": {
+        "summary": "Get time series data",
+        "description": "Get time series data for a date range (max 5 years)",
+        "tags": ["Historical Currency"],
+        "operationId": "getTimeSeries",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication" },
+          { "name": "start_date", "in": "query", "type": "string", "required": true, "description": "Start date in YYYY-MM-DD format" },
+          { "name": "end_date", "in": "query", "type": "string", "required": true, "description": "End date in YYYY-MM-DD format" },
+          { "name": "amount", "in": "query", "type": "number", "default": 1, "description": "Amount to convert" },
+          { "name": "base", "in": "query", "type": "string", "description": "Base currency code (defaults to USD)" },
+          { "name": "currencies", "in": "query", "type": "string", "description": "Comma-separated list of currency codes" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "Time series data retrieved successfully" },
+          "400": { "description": "Invalid parameters or date range exceeds 5 years" },
+          "401": { "description": "Missing or invalid API key" },
+          "429": { "description": "Rate limit exceeded" }
+        }
+      }
+    },
+    "/api/historical/limits": {
+      "get": {
+        "summary": "Get historical data limits",
+        "description": "Get information about available historical data limits per currency",
+        "tags": ["Historical Currency"],
+        "operationId": "getHistoricalLimits",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "Historical data limits retrieved successfully" },
+          "401": { "description": "Missing or invalid API key" }
+        }
+      }
+    },
+    "/api/vat/rates": {
+      "get": {
+        "summary": "Get VAT rates",
+        "description": "Get VAT rates for all countries or a specific country",
+        "tags": ["VAT Rates"],
+        "operationId": "getVatRates",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication" },
+          { "name": "country", "in": "query", "type": "string", "description": "Two-letter country code (e.g., DE, FR)" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "VAT rates retrieved successfully" },
+          "401": { "description": "Missing or invalid API key" },
+          "404": { "description": "No VAT rates found for specified country" }
+        }
+      }
+    },
+    "/api/commodities/symbols": {
+      "get": {
+        "summary": "List commodity symbols",
+        "description": "List all available commodity symbols (Pro subscription required)",
+        "tags": ["Commodity"],
+        "operationId": "listCommoditySymbols",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication (Pro tier)" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "A list of available commodity symbols" },
+          "401": { "description": "Missing or invalid API key" },
+          "403": { "description": "Pro subscription required" }
+        }
+      }
+    },
+    "/api/commodities/rates": {
+      "get": {
+        "summary": "Get commodity prices",
+        "description": "Get commodity prices with optional amount conversion (Pro subscription required)",
+        "tags": ["Commodity"],
+        "operationId": "getCommodityRates",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication (Pro tier)" },
+          { "name": "amount", "in": "query", "type": "number", "default": 1, "description": "Amount to convert" },
+          { "name": "from", "in": "query", "type": "string", "default": "USD", "description": "Base symbol" },
+          { "name": "to", "in": "query", "type": "string", "description": "Target symbol" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "Commodity prices retrieved successfully" },
+          "401": { "description": "Missing or invalid API key" },
+          "403": { "description": "Pro subscription required" },
+          "404": { "description": "Symbol not found" }
+        }
+      }
+    },
+    "/api/commodities/convert": {
+      "get": {
+        "summary": "Convert commodities",
+        "description": "Convert between commodities and currencies (Pro subscription required)",
+        "tags": ["Commodity"],
+        "operationId": "convertCommodity",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication (Pro tier)" },
+          { "name": "amount", "in": "query", "type": "number", "default": 1, "description": "Amount to convert" },
+          { "name": "from", "in": "query", "type": "string", "default": "USD", "description": "Source symbol" },
+          { "name": "to", "in": "query", "type": "string", "description": "Target symbol" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "Conversion completed successfully" },
+          "400": { "description": "Invalid amount or conversion failed" },
+          "401": { "description": "Missing or invalid API key" },
+          "403": { "description": "Pro subscription required" }
+        }
+      }
+    },
+    "/api/commodities/historical/rates": {
+      "get": {
+        "summary": "Get historical commodity prices",
+        "description": "Get historical commodity prices for a specific date (Pro subscription required)",
+        "tags": ["Commodity"],
+        "operationId": "getHistoricalCommodityRates",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication (Pro tier)" },
+          { "name": "date", "in": "query", "type": "string", "required": true, "description": "Date in YYYY-MM-DD format" },
+          { "name": "amount", "in": "query", "type": "number", "default": 1, "description": "Amount to convert" },
+          { "name": "from", "in": "query", "type": "string", "default": "USD", "description": "Base symbol" },
+          { "name": "to", "in": "query", "type": "string", "description": "Target symbol" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "Historical commodity prices retrieved successfully" },
+          "400": { "description": "Invalid date format" },
+          "401": { "description": "Missing or invalid API key" },
+          "403": { "description": "Pro subscription required" }
+        }
+      }
+    },
+    "/api/commodities/historical/timeseries": {
+      "get": {
+        "summary": "Get commodity time series",
+        "description": "Get commodity time series data for a date range (max 5 years, Pro subscription required)",
+        "tags": ["Commodity"],
+        "operationId": "getCommodityTimeSeries",
+        "parameters": [
+          { "name": "api_key", "in": "query", "type": "string", "required": true, "description": "API key for authentication (Pro tier)" },
+          { "name": "start_date", "in": "query", "type": "string", "required": true, "description": "Start date in YYYY-MM-DD format" },
+          { "name": "end_date", "in": "query", "type": "string", "required": true, "description": "End date in YYYY-MM-DD format" },
+          { "name": "amount", "in": "query", "type": "number", "default": 1, "description": "Amount to multiply prices by" },
+          { "name": "symbols", "in": "query", "type": "string", "description": "Comma-separated list of commodity symbols" },
+          { "name": "format", "in": "query", "type": "string", "enum": ["json", "xml", "csv", "tsv"], "default": "json", "description": "Response format" }
+        ],
+        "responses": {
+          "200": { "description": "Time series data retrieved successfully" },
+          "400": { "description": "Invalid parameters or date range exceeds 5 years" },
+          "401": { "description": "Missing or invalid API key" },
+          "403": { "description": "Pro subscription required" }
+        }
+      }
+    }
+  },
+  "definitions": {}
+}

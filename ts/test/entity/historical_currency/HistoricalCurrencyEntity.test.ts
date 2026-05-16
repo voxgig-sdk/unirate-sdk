@@ -1,0 +1,147 @@
+
+const envlocal = __dirname + '/../../../.env.local'
+require('dotenv').config({ quiet: true, path: [envlocal] })
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+
+
+import { UnirateSDK, BaseFeature, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveDelay,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+describe('HistoricalCurrencyEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when UNIRATE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('UNIRATE_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = UnirateSDK.test()
+    const ent = testsdk.HistoricalCurrency()
+    assert(null != ent)
+  })
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.UNIRATE_TEST_LIVE
+    for (const op of ['load']) {
+      if (maybeSkipControl(t, 'entityOp', 'historical_currency.' + op, live)) return
+    }
+
+    const setup = basicSetup()
+    // The basic flow consumes synthetic IDs and field values from the
+    // fixture (entity TestData.json). Those don't exist on the live API.
+    // Skip live runs unless the user provided a real ENTID env override.
+    if (setup.syntheticOnly) {
+      t.skip('live entity test uses synthetic IDs from fixture — set UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID JSON to run live')
+      return
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+    let historical_currency_ref01_data = Object.values(setup.data.existing.historical_currency)[0] as any
+
+    // LOAD
+    const historical_currency_ref01_ent = client.HistoricalCurrency()
+    const historical_currency_ref01_match_dt0: any = {}
+    const historical_currency_ref01_data_dt0 = await historical_currency_ref01_ent.load(historical_currency_ref01_match_dt0)
+    assert(null != historical_currency_ref01_data_dt0)
+
+
+  })
+})
+
+
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/historical_currency/HistoricalCurrencyTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = UnirateSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['historical_currency01','historical_currency02','historical_currency03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  // Detect whether the user provided a real ENTID JSON via env var. The
+  // basic flow consumes synthetic IDs from the fixture file; without an
+  // override those synthetic IDs reach the live API and 4xx. Surface this
+  // to the test so it can skip rather than fail.
+  const idmapEnvVal = process.env['UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID']
+  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
+
+  const env = envOverride({
+    'UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID': idmap,
+    'UNIRATE_TEST_LIVE': 'FALSE',
+    'UNIRATE_TEST_EXPLAIN': 'FALSE',
+    'UNIRATE_APIKEY': 'NONE',
+  })
+
+  idmap = env['UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID']
+
+  const live = 'TRUE' === env.UNIRATE_TEST_LIVE
+
+  if (live) {
+    client = new UnirateSDK(merge([
+      {
+        apikey: env.UNIRATE_APIKEY,
+      },
+      extra
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.UNIRATE_TEST_EXPLAIN,
+    live,
+    syntheticOnly: live && !idmapOverridden,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

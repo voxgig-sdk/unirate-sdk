@@ -1,0 +1,59 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 4
+  metrics: count: path: 12
+  metrics: count: method: 12
+
+  entity: commodity: {
+    path: "/api/commodities/convert": {
+      action: "convert": {}
+      op: load: method: *GET
+    }
+    path: "/api/commodities/historical/rates": {
+      op: load: method: *GET
+    }
+    path: "/api/commodities/historical/timeseries": {
+      op: load: method: *GET
+    }
+    path: "/api/commodities/rates": {
+      action: "rate": {}
+      op: load: method: *GET
+    }
+    path: "/api/commodities/symbols": {
+      action: "symbol": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: currency: {
+    path: "/api/convert": {
+      op: load: method: *GET
+    }
+    path: "/api/currencies": {
+      op: load: method: *GET
+    }
+    path: "/api/rates": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: historical_currency: {
+    path: "/api/historical/limits": {
+      op: load: method: *GET
+    }
+    path: "/api/historical/rates": {
+      op: load: method: *GET
+    }
+    path: "/api/historical/timeseries": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: vat_rate: {
+    path: "/api/vat/rates": {
+      op: load: method: *GET
+    }
+  }
+
+}

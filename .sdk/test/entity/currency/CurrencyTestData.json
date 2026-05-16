@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "currency": {
+      "CURRENCY00": {},
+      "CURRENCY01": {},
+      "CURRENCY02": {}
+    }
+  },
+  "new": {
+    "currency": {
+      "currency_ref01": {}
+    }
+  }
+}

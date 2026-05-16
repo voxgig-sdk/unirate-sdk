@@ -1,0 +1,19 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "API for currency conversion and exchange rates with historical data"
+      servers: [
+        {
+          url: "https://api.unirateapi.com"
+        }
+      ]
+      title: "UniRate API"
+      version: "1.0"
+    }
+  }
+}
+
+}

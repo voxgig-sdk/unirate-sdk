@@ -1,0 +1,201 @@
+# Entity: historical_currency
+
+main: kit: entity: historical_currency: {
+
+  alias: field: {}
+
+  name: "historical_currency"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "amount"
+                orig: "amount"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "api_key"
+                orig: "api_key"
+                reqd: true
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "base"
+                orig: "base"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "currency"
+                orig: "currency"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "end_date"
+                orig: "end_date"
+                reqd: true
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "start_date"
+                orig: "start_date"
+                reqd: true
+                type: "`$ANY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/historical/timeseries"
+          parts: [
+            "api"
+            "historical"
+            "timeseries"
+          ]
+          select: {
+            exist: [
+              "amount"
+              "api_key"
+              "base"
+              "currency"
+              "end_date"
+              "format"
+              "start_date"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "amount"
+                orig: "amount"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "api_key"
+                orig: "api_key"
+                reqd: true
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "date"
+                orig: "date"
+                reqd: true
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "from"
+                orig: "from"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "to"
+                orig: "to"
+                reqd: false
+                type: "`$ANY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/historical/rates"
+          parts: [
+            "api"
+            "historical"
+            "rates"
+          ]
+          select: {
+            exist: [
+              "amount"
+              "api_key"
+              "date"
+              "format"
+              "from"
+              "to"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "api_key"
+                orig: "api_key"
+                reqd: true
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$ANY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/historical/limits"
+          parts: [
+            "api"
+            "historical"
+            "limits"
+          ]
+          select: {
+            exist: [
+              "api_key"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

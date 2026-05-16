@@ -1,0 +1,63 @@
+# Entity: vat_rate
+
+main: kit: entity: vat_rate: {
+
+  alias: field: {}
+
+  name: "vat_rate"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "api_key"
+                orig: "api_key"
+                reqd: true
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "country"
+                orig: "country"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$ANY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/vat/rates"
+          parts: [
+            "api"
+            "vat"
+            "rates"
+          ]
+          select: {
+            exist: [
+              "api_key"
+              "country"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

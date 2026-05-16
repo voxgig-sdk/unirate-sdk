@@ -1,0 +1,28 @@
+# BasicVatRateFlow
+
+main: kit: flow: BasicVatRateFlow:
+{
+  entity: "vat_rate",
+  kind: "basic",
+  name: "BasicVatRateFlow",
+  step: [
+    {
+      input: {
+        ref: "vat_rate_ref01",
+        srcdatavar: "vat_rate_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vat_rate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVatRateFlow"
+}

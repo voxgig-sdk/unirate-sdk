@@ -1,0 +1,28 @@
+# BasicHistoricalCurrencyFlow
+
+main: kit: flow: BasicHistoricalCurrencyFlow:
+{
+  entity: "historical_currency",
+  kind: "basic",
+  name: "BasicHistoricalCurrencyFlow",
+  step: [
+    {
+      input: {
+        ref: "historical_currency_ref01",
+        srcdatavar: "historical_currency_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-historical_currency_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHistoricalCurrencyFlow"
+}

@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "commodity": {
+      "COMMODITY00": {},
+      "COMMODITY01": {},
+      "COMMODITY02": {}
+    }
+  },
+  "new": {
+    "commodity": {
+      "commodity_ref01": {}
+    }
+  }
+}

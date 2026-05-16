@@ -1,0 +1,6 @@
+# Flows
+
+@"BasicCommodityFlow.jsonic"
+@"BasicCurrencyFlow.jsonic"
+@"BasicHistoricalCurrencyFlow.jsonic"
+@"BasicVatRateFlow.jsonic"

@@ -1,0 +1,174 @@
+# Entity: currency
+
+main: kit: entity: currency: {
+
+  alias: field: {}
+
+  name: "currency"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "amount"
+                orig: "amount"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "api_key"
+                orig: "api_key"
+                reqd: true
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "from"
+                orig: "from"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "to"
+                orig: "to"
+                reqd: true
+                type: "`$ANY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/convert"
+          parts: [
+            "api"
+            "convert"
+          ]
+          select: {
+            exist: [
+              "amount"
+              "api_key"
+              "format"
+              "from"
+              "to"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "amount"
+                orig: "amount"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "api_key"
+                orig: "api_key"
+                reqd: true
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "from"
+                orig: "from"
+                reqd: false
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "to"
+                orig: "to"
+                reqd: false
+                type: "`$ANY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/rates"
+          parts: [
+            "api"
+            "rates"
+          ]
+          select: {
+            exist: [
+              "amount"
+              "api_key"
+              "format"
+              "from"
+              "to"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "api_key"
+                orig: "api_key"
+                reqd: true
+                type: "`$ANY`"
+              }
+              {
+                kind: "query"
+                name: "format"
+                orig: "format"
+                reqd: false
+                type: "`$ANY`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/api/currencies"
+          parts: [
+            "api"
+            "currencies"
+          ]
+          select: {
+            exist: [
+              "api_key"
+              "format"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

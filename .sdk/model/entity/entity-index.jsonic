@@ -1,0 +1,6 @@
+# Entity Models
+
+@"commodity.jsonic"
+@"currency.jsonic"
+@"historical_currency.jsonic"
+@"vat_rate.jsonic"

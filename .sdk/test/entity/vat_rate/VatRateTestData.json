@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "vat_rate": {
+      "VAT_RATE00": {},
+      "VAT_RATE01": {},
+      "VAT_RATE02": {}
+    }
+  },
+  "new": {
+    "vat_rate": {
+      "vat_rate_ref01": {}
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# BasicCommodityFlow
+
+main: kit: flow: BasicCommodityFlow:
+{
+  entity: "commodity",
+  kind: "basic",
+  name: "BasicCommodityFlow",
+  step: [
+    {
+      input: {
+        ref: "commodity_ref01",
+        srcdatavar: "commodity_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-commodity_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCommodityFlow"
+}
