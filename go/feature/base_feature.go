@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/unirate-sdk/core"
+	"github.com/voxgig-sdk/unirate-sdk/go/core"
 )
 
 type BaseFeature struct {

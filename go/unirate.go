@@ -1,10 +1,10 @@
 package voxgiguniratesdk
 
 import (
-	"github.com/voxgig-sdk/unirate-sdk/core"
-	"github.com/voxgig-sdk/unirate-sdk/entity"
-	"github.com/voxgig-sdk/unirate-sdk/feature"
-	_ "github.com/voxgig-sdk/unirate-sdk/utility"
+	"github.com/voxgig-sdk/unirate-sdk/go/core"
+	"github.com/voxgig-sdk/unirate-sdk/go/entity"
+	"github.com/voxgig-sdk/unirate-sdk/go/feature"
+	_ "github.com/voxgig-sdk/unirate-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

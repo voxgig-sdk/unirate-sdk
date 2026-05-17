@@ -1,9 +1,15 @@
 {
   "existing": {
     "currency": {
-      "CURRENCY00": {},
-      "CURRENCY01": {},
-      "CURRENCY02": {}
+      "CURRENCY00": {
+        "id": "CURRENCY00"
+      },
+      "CURRENCY01": {
+        "id": "CURRENCY01"
+      },
+      "CURRENCY02": {
+        "id": "CURRENCY02"
+      }
     }
   },
   "new": {

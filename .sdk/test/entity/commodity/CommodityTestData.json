@@ -1,9 +1,15 @@
 {
   "existing": {
     "commodity": {
-      "COMMODITY00": {},
-      "COMMODITY01": {},
-      "COMMODITY02": {}
+      "COMMODITY00": {
+        "id": "COMMODITY00"
+      },
+      "COMMODITY01": {
+        "id": "COMMODITY01"
+      },
+      "COMMODITY02": {
+        "id": "COMMODITY02"
+      }
     }
   },
   "new": {

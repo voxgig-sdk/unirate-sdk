@@ -1,9 +1,15 @@
 {
   "existing": {
     "historical_currency": {
-      "HISTORICAL_CURRENCY00": {},
-      "HISTORICAL_CURRENCY01": {},
-      "HISTORICAL_CURRENCY02": {}
+      "HISTORICAL_CURRENCY00": {
+        "id": "HISTORICAL_CURRENCY00"
+      },
+      "HISTORICAL_CURRENCY01": {
+        "id": "HISTORICAL_CURRENCY01"
+      },
+      "HISTORICAL_CURRENCY02": {
+        "id": "HISTORICAL_CURRENCY02"
+      }
     }
   },
   "new": {

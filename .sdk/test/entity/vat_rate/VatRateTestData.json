@@ -1,9 +1,15 @@
 {
   "existing": {
     "vat_rate": {
-      "VAT_RATE00": {},
-      "VAT_RATE01": {},
-      "VAT_RATE02": {}
+      "VAT_RATE00": {
+        "id": "VAT_RATE00"
+      },
+      "VAT_RATE01": {
+        "id": "VAT_RATE01"
+      },
+      "VAT_RATE02": {
+        "id": "VAT_RATE02"
+      }
     }
   },
   "new": {

@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/unirate-sdk"
-	"github.com/voxgig-sdk/unirate-sdk/core"
+	sdk "github.com/voxgig-sdk/unirate-sdk/go"
+	"github.com/voxgig-sdk/unirate-sdk/go/core"
 )
 
 func TestVatRateDirect(t *testing.T) {
