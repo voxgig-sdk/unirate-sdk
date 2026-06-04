@@ -74,14 +74,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'UNIRATE_TEST_VAT_RATE_ENTID': {},
     'UNIRATE_TEST_LIVE': 'FALSE',
-    'UNIRATE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.UNIRATE_TEST_LIVE
 
   if (live) {
     const client = new UnirateSDK({
-      apikey: env.UNIRATE_APIKEY,
     })
 
     let idmap: any = env['UNIRATE_TEST_VAT_RATE_ENTID']

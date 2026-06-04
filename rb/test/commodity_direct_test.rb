@@ -61,14 +61,12 @@ def commodity_direct_setup(mockres)
   env = Runner.env_override({
     "UNIRATE_TEST_COMMODITY_ENTID" => {},
     "UNIRATE_TEST_LIVE" => "FALSE",
-    "UNIRATE_APIKEY" => "NONE",
   })
 
   live = env["UNIRATE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
-      "apikey" => env["UNIRATE_APIKEY"],
     }
     client = UnirateSDK.new(merged_opts)
     return {

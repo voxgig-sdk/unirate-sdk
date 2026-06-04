@@ -82,7 +82,6 @@ def vat_rate_basic_setup(extra)
     "UNIRATE_TEST_VAT_RATE_ENTID" => idmap,
     "UNIRATE_TEST_LIVE" => "FALSE",
     "UNIRATE_TEST_EXPLAIN" => "FALSE",
-    "UNIRATE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +93,6 @@ def vat_rate_basic_setup(extra)
   if env["UNIRATE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["UNIRATE_APIKEY"],
       },
       extra || {},
     ])

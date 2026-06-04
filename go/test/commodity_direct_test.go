@@ -99,14 +99,12 @@ func commodityDirectSetup(mockres any) *commodityDirectSetupResult {
 	env := envOverride(map[string]any{
 		"UNIRATE_TEST_COMMODITY_ENTID": map[string]any{},
 		"UNIRATE_TEST_LIVE":    "FALSE",
-		"UNIRATE_APIKEY":       "NONE",
 	})
 
 	live := env["UNIRATE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["UNIRATE_APIKEY"],
 		}
 		client := sdk.NewUnirateSDK(mergedOpts)
 
