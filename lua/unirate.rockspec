@@ -8,12 +8,14 @@ source = {
   dir = "unirate-sdk/lua"
 }
 description = {
-  summary = "Unirate SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the UniRate public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/unirate-sdk",
+  issues_url = "https://github.com/voxgig-sdk/unirate-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "unirate" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

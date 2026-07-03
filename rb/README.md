@@ -10,13 +10,13 @@ The Ruby SDK for the Unirate API — an entity-oriented client using idiomatic R
 
 ## Install
 ```bash
-gem install unirate-sdk
+gem install voxgig-sdk-unirate
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "unirate-sdk"
+gem "voxgig-sdk-unirate"
 ```
 
 Then run:

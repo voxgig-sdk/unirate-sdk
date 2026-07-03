@@ -10,7 +10,7 @@ The Python SDK for the Unirate API — an entity-oriented client following Pytho
 
 ## Install
 ```bash
-pip install unirate-sdk
+pip install voxgig-sdk-unirate
 ```
 
 Or install from source:

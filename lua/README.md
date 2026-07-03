@@ -10,7 +10,7 @@ The Lua SDK for the Unirate API — an entity-oriented client using Lua conventi
 
 ## Install
 ```bash
-luarocks install unirate-sdk
+luarocks install voxgig-sdk-unirate
 ```
 
 If the module is not yet published, add the source directory to

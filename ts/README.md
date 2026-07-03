@@ -10,7 +10,7 @@ The TypeScript SDK for the Unirate API — a type-safe, entity-oriented client w
 
 ## Install
 ```bash
-npm install unirate
+npm install @voxgig-sdk/unirate
 ```
 ## Tutorial: your first API call
 

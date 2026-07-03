@@ -10,7 +10,7 @@ The PHP SDK for the Unirate API — an entity-oriented client using PHP conventi
 
 ## Install
 ```bash
-composer require voxgig/unirate-sdk
+composer require voxgig-sdk/unirate
 ```
 
 
