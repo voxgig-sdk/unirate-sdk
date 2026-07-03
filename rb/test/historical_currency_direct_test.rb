@@ -61,12 +61,14 @@ def historical_currency_direct_setup(mockres)
   env = Runner.env_override({
     "UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID" => {},
     "UNIRATE_TEST_LIVE" => "FALSE",
+    "UNIRATE_APIKEY" => "NONE",
   })
 
   live = env["UNIRATE_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["UNIRATE_APIKEY"],
     }
     client = UnirateSDK.new(merged_opts)
     return {

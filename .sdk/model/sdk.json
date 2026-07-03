@@ -1,38 +1,13 @@
 {
-  "name": "unirate",
-  "origin": "voxgig-sdk",
   "def": "unirate_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "description": "API for currency conversion and exchange rates with historical data",
-        "servers": [
-          {
-            "url": "https://api.unirateapi.com"
-          }
-        ],
-        "title": "UniRate API",
-        "version": "1.0",
-        "tagline": "Convert currencies, query precious-metal prices, and look up EU VAT rates from one REST API",
-        "homepage": "https://unirateapi.com/",
-        "docs_url": "https://unirateapi.com/apidocs/",
-        "license_short": "Data provided as-is for informational use; redistribution prohibited per the UniRateAPI terms.",
-        "license_md": "- UniRateAPI publishes its data \"as is\" for informational purposes — see the [terms page](https://unirateapi.com/) for the binding text.\n- Redistribution of the raw rate data is not permitted.\n- An API key is required; usage is governed by the per-plan rate limits set by UniRateAPI.\n- This SDK wraps the public HTTP API; it does not grant any additional rights to the underlying data.",
-        "about_md": "[UniRate API](https://unirateapi.com/) is a REST service that bundles foreign-exchange, cryptocurrency, precious-metals and EU VAT data behind a single endpoint surface at `https://api.unirateapi.com`. Authentication is by API key passed as the `api_key` query parameter.\n\nWhat you get from the API:\n\n- Live and historical exchange rates across roughly 170 fiat currencies and 420+ cryptocurrencies (forex history from 1999, crypto from 2009).\n- Currency conversion for arbitrary amounts and pairs.\n- Spot prices for Gold, Silver, Platinum and Palladium (precious-metals data on the Pro tier, history reaching back to 1968).\n- EU-style VAT rates for around 120 countries.\n\nOperational notes: the free tier is rate-limited (around 30 requests/minute and 200 requests/day at the time of writing); the Pro tier raises the daily cap substantially and unlocks the commodities endpoints. Endpoints follow a `/api/...` path convention (for example `/api/rates`, `/api/convert`, `/api/currencies`, `/api/historical/rates`, `/api/historical/timeseries`, `/api/commodities/rates`).",
-        "entity_desc": {
-          "commodity": "Precious-metal spot prices (Gold, Silver, Platinum, Palladium); exposed via `/api/commodities/rates` on the Pro tier.",
-          "currency": "The catalogue of supported fiat and cryptocurrency codes together with current exchange-rate and conversion operations against `/api/currencies`, `/api/rates` and `/api/convert`.",
-          "historical_currency": "Past exchange rates for a single date or a date range, served from `/api/historical/rates` and `/api/historical/timeseries` (forex history from 1999).",
-          "vat_rate": "EU-style value-added-tax rates covering roughly 120 countries, available to free-tier callers."
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -41,68 +16,75 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "commodity": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "commodity",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "amount",
                         "orig": "amount",
                         "reqd": false,
-                        "type": "`$NUMBER`",
-                        "active": true
+                        "type": "`$NUMBER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "date",
                         "orig": "date",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "from",
                         "orig": "from",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "to",
                         "orig": "to",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -127,59 +109,59 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "amount",
                         "orig": "amount",
                         "reqd": false,
-                        "type": "`$NUMBER`",
-                        "active": true
+                        "type": "`$NUMBER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "end_date",
                         "orig": "end_date",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "start_date",
                         "orig": "start_date",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "symbol",
                         "orig": "symbol",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -204,51 +186,51 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "amount",
                         "orig": "amount",
                         "reqd": false,
-                        "type": "`$NUMBER`",
-                        "active": true
+                        "type": "`$NUMBER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "from",
                         "orig": "from",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "to",
                         "orig": "to",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -272,51 +254,51 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "amount",
                         "orig": "amount",
                         "reqd": false,
-                        "type": "`$NUMBER`",
-                        "active": true
+                        "type": "`$NUMBER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "from",
                         "orig": "from",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "to",
                         "orig": "to",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -340,27 +322,27 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -381,70 +363,70 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "currency": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "currency",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "amount",
                         "orig": "amount",
                         "reqd": false,
-                        "type": "`$NUMBER`",
-                        "active": true
+                        "type": "`$NUMBER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "from",
                         "orig": "from",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "to",
                         "orig": "to",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -466,51 +448,51 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "amount",
                         "orig": "amount",
                         "reqd": false,
-                        "type": "`$NUMBER`",
-                        "active": true
+                        "type": "`$NUMBER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "from",
                         "orig": "from",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "to",
                         "orig": "to",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -532,27 +514,27 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -571,86 +553,86 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "historical_currency": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "historical_currency",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "amount",
                         "orig": "amount",
                         "reqd": false,
-                        "type": "`$NUMBER`",
-                        "active": true
+                        "type": "`$NUMBER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "base",
                         "orig": "base",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "currency",
                         "orig": "currency",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "end_date",
                         "orig": "end_date",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "start_date",
                         "orig": "start_date",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -675,59 +657,59 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "amount",
                         "orig": "amount",
                         "reqd": false,
-                        "type": "`$NUMBER`",
-                        "active": true
+                        "type": "`$NUMBER`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "date",
                         "orig": "date",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "from",
                         "orig": "from",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "to",
                         "orig": "to",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -751,27 +733,27 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 },
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -791,54 +773,54 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
         },
         "vat_rate": {
+          "active": true,
           "alias": {
             "field": {}
           },
+          "fields": [],
           "name": "vat_rate",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "query": [
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "api_key",
                         "orig": "api_key",
                         "reqd": true,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "country",
                         "orig": "country",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       },
                       {
+                        "active": true,
                         "kind": "query",
                         "name": "format",
                         "orig": "format",
                         "reqd": false,
-                        "type": "`$ANY`",
-                        "active": true
+                        "type": "`$ANY`"
                       }
                     ]
                   },
@@ -859,15 +841,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
-          "fields": [],
           "relations": {
             "ancestors": []
           }
@@ -875,9 +853,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -885,6 +860,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -893,25 +876,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -927,20 +896,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -955,28 +936,34 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicCommodityFlow": {
+          "active": true,
           "entity": "commodity",
+          "key$": "BasicCommodityFlow",
           "kind": "basic",
           "name": "BasicCommodityFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "commodity_ref01",
                 "srcdatavar": "commodity_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -984,29 +971,29 @@
                     "mark": "Mark01-commodity_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicCommodityFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicCurrencyFlow": {
+          "active": true,
           "entity": "currency",
+          "key$": "BasicCurrencyFlow",
           "kind": "basic",
           "name": "BasicCurrencyFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "currency_ref01",
                 "srcdatavar": "currency_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -1014,29 +1001,29 @@
                     "mark": "Mark01-currency_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicCurrencyFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicHistoricalCurrencyFlow": {
+          "active": true,
           "entity": "historical_currency",
+          "key$": "BasicHistoricalCurrencyFlow",
           "kind": "basic",
           "name": "BasicHistoricalCurrencyFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "historical_currency_ref01",
                 "srcdatavar": "historical_currency_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -1044,29 +1031,29 @@
                     "mark": "Mark01-historical_currency_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicHistoricalCurrencyFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicVatRateFlow": {
+          "active": true,
           "entity": "vat_rate",
+          "key$": "BasicVatRateFlow",
           "kind": "basic",
           "name": "BasicVatRateFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "vat_rate_ref01",
                 "srcdatavar": "vat_rate_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -1074,28 +1061,48 @@
                     "mark": "Mark01-vat_rate_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicVatRateFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "description": "API for currency conversion and exchange rates with historical data",
+        "servers": [
+          {
+            "url": "https://api.unirateapi.com"
+          }
+        ],
+        "title": "UniRate API",
+        "version": "1.0"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "unirate"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "unirate"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -1110,19 +1117,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "unirate"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -1137,138 +1144,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "unirate"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "unirate"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "unirate"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "unirate"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "unirate"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "unirate"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "unirate"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "unirate"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "unirate"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "unirate",
+  "origin": "voxgig-sdk"
 }

@@ -67,12 +67,14 @@ function vat_rate_direct_setup($mockres)
     $env = Runner::env_override([
         "UNIRATE_TEST_VAT_RATE_ENTID" => [],
         "UNIRATE_TEST_LIVE" => "FALSE",
+        "UNIRATE_APIKEY" => "NONE",
     ]);
 
     $live = $env["UNIRATE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
+            "apikey" => $env["UNIRATE_APIKEY"],
         ];
         $client = new UnirateSDK($merged_opts);
         return [

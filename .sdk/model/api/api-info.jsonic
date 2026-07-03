@@ -12,31 +12,7 @@ main: {
       ]
       title: "UniRate API"
       version: "1.0"
-      tagline: "Convert currencies, query precious-metal prices, and look up EU VAT rates from one REST API"
-      homepage: "https://unirateapi.com/"
-      docs_url: "https://unirateapi.com/apidocs/"
-      license_short: "Data provided as-is for informational use; redistribution prohibited per the UniRateAPI terms."
-      license_md: `- UniRateAPI publishes its data "as is" for informational purposes — see the [terms page](https://unirateapi.com/) for the binding text.
-- Redistribution of the raw rate data is not permitted.
-- An API key is required; usage is governed by the per-plan rate limits set by UniRateAPI.
-- This SDK wraps the public HTTP API; it does not grant any additional rights to the underlying data.`
-      about_md: `[UniRate API](https://unirateapi.com/) is a REST service that bundles foreign-exchange, cryptocurrency, precious-metals and EU VAT data behind a single endpoint surface at \`https://api.unirateapi.com\`. Authentication is by API key passed as the \`api_key\` query parameter.
-
-What you get from the API:
-
-- Live and historical exchange rates across roughly 170 fiat currencies and 420+ cryptocurrencies (forex history from 1999, crypto from 2009).
-- Currency conversion for arbitrary amounts and pairs.
-- Spot prices for Gold, Silver, Platinum and Palladium (precious-metals data on the Pro tier, history reaching back to 1968).
-- EU-style VAT rates for around 120 countries.
-
-Operational notes: the free tier is rate-limited (around 30 requests/minute and 200 requests/day at the time of writing); the Pro tier raises the daily cap substantially and unlocks the commodities endpoints. Endpoints follow a \`/api/...\` path convention (for example \`/api/rates\`, \`/api/convert\`, \`/api/currencies\`, \`/api/historical/rates\`, \`/api/historical/timeseries\`, \`/api/commodities/rates\`).`
-      entity_desc: {
-        commodity: "Precious-metal spot prices (Gold, Silver, Platinum, Palladium); exposed via `/api/commodities/rates` on the Pro tier."
-        currency: "The catalogue of supported fiat and cryptocurrency codes together with current exchange-rate and conversion operations against `/api/currencies`, `/api/rates` and `/api/convert`."
-        historical_currency: "Past exchange rates for a single date or a date range, served from `/api/historical/rates` and `/api/historical/timeseries` (forex history from 1999)."
-        vat_rate: "EU-style value-added-tax rates covering roughly 120 countries, available to free-tier callers."
-      }
-      auth: false
     }
   }
 }
+

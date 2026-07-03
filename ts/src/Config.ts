@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://api.unirateapi.com',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -66,58 +70,60 @@ class Config {
       "name": "commodity",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "amount",
                     "orig": "amount",
                     "reqd": false,
-                    "type": "`$NUMBER`",
-                    "active": true
+                    "type": "`$NUMBER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "date",
                     "orig": "date",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "from",
                     "orig": "from",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "to",
                     "orig": "to",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -143,59 +149,59 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "amount",
                     "orig": "amount",
                     "reqd": false,
-                    "type": "`$NUMBER`",
-                    "active": true
+                    "type": "`$NUMBER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "end_date",
                     "orig": "end_date",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "start_date",
                     "orig": "start_date",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "symbol",
                     "orig": "symbol",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -221,51 +227,51 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 1
             },
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "amount",
                     "orig": "amount",
                     "reqd": false,
-                    "type": "`$NUMBER`",
-                    "active": true
+                    "type": "`$NUMBER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "from",
                     "orig": "from",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "to",
                     "orig": "to",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -290,51 +296,51 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 2
             },
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "amount",
                     "orig": "amount",
                     "reqd": false,
-                    "type": "`$NUMBER`",
-                    "active": true
+                    "type": "`$NUMBER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "from",
                     "orig": "from",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "to",
                     "orig": "to",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -359,27 +365,27 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 3
             },
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -401,11 +407,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 4
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -418,50 +422,52 @@ class Config {
       "name": "currency",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "amount",
                     "orig": "amount",
                     "reqd": false,
-                    "type": "`$NUMBER`",
-                    "active": true
+                    "type": "`$NUMBER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "from",
                     "orig": "from",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "to",
                     "orig": "to",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -484,51 +490,51 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "amount",
                     "orig": "amount",
                     "reqd": false,
-                    "type": "`$NUMBER`",
-                    "active": true
+                    "type": "`$NUMBER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "from",
                     "orig": "from",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "to",
                     "orig": "to",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -551,27 +557,27 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 1
             },
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -591,11 +597,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 2
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -608,66 +612,68 @@ class Config {
       "name": "historical_currency",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "amount",
                     "orig": "amount",
                     "reqd": false,
-                    "type": "`$NUMBER`",
-                    "active": true
+                    "type": "`$NUMBER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "base",
                     "orig": "base",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "currency",
                     "orig": "currency",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "end_date",
                     "orig": "end_date",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "start_date",
                     "orig": "start_date",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -693,59 +699,59 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "amount",
                     "orig": "amount",
                     "reqd": false,
-                    "type": "`$NUMBER`",
-                    "active": true
+                    "type": "`$NUMBER`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "date",
                     "orig": "date",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "from",
                     "orig": "from",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "to",
                     "orig": "to",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -770,27 +776,27 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 1
             },
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -811,11 +817,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 2
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -828,34 +832,36 @@ class Config {
       "name": "vat_rate",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "api_key",
                     "orig": "api_key",
                     "reqd": true,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "country",
                     "orig": "country",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   },
                   {
+                    "active": true,
                     "kind": "query",
                     "name": "format",
                     "orig": "format",
                     "reqd": false,
-                    "type": "`$ANY`",
-                    "active": true
+                    "type": "`$ANY`"
                   }
                 ]
               },
@@ -877,11 +883,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -106,7 +106,7 @@ local commodity = client:Commodity(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Commodity(nil):load({ id = "commodity_id" }, nil)
+local result, err = client:Commodity():load({ id = "commodity_id" })
 ```
 
 ### Common Methods
@@ -152,7 +152,7 @@ local currency = client:Currency(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Currency(nil):load({ id = "currency_id" }, nil)
+local result, err = client:Currency():load({ id = "currency_id" })
 ```
 
 ### Common Methods
@@ -198,7 +198,7 @@ local historical_currency = client:HistoricalCurrency(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HistoricalCurrency(nil):load({ id = "historical_currency_id" }, nil)
+local result, err = client:HistoricalCurrency():load({ id = "historical_currency_id" })
 ```
 
 ### Common Methods
@@ -244,7 +244,7 @@ local vat_rate = client:VatRate(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:VatRate(nil):load({ id = "vat_rate_id" }, nil)
+local result, err = client:VatRate():load({ id = "vat_rate_id" })
 ```
 
 ### Common Methods

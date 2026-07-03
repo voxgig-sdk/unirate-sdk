@@ -1,21 +1,8 @@
 # Unirate SDK
 
-Convert currencies, query precious-metal prices, and look up EU VAT rates from one REST API
+UniRate API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About UniRate API
-
-[UniRate API](https://unirateapi.com/) is a REST service that bundles foreign-exchange, cryptocurrency, precious-metals and EU VAT data behind a single endpoint surface at `https://api.unirateapi.com`. Authentication is by API key passed as the `api_key` query parameter.
-
-What you get from the API:
-
-- Live and historical exchange rates across roughly 170 fiat currencies and 420+ cryptocurrencies (forex history from 1999, crypto from 2009).
-- Currency conversion for arbitrary amounts and pairs.
-- Spot prices for Gold, Silver, Platinum and Palladium (precious-metals data on the Pro tier, history reaching back to 1968).
-- EU-style VAT rates for around 120 countries.
-
-Operational notes: the free tier is rate-limited (around 30 requests/minute and 200 requests/day at the time of writing); the Pro tier raises the daily cap substantially and unlocks the commodities endpoints. Endpoints follow a `/api/...` path convention (for example `/api/rates`, `/api/convert`, `/api/currencies`, `/api/historical/rates`, `/api/historical/timeseries`, `/api/commodities/rates`).
 
 ## Try it
 
@@ -49,27 +36,31 @@ gem install unirate-sdk
 luarocks install unirate-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { UnirateSDK } from 'unirate'
 
-const client = new UnirateSDK({})
+const client = new UnirateSDK({
+  apikey: process.env.UNIRATE_APIKEY,
+})
 
+// Load commodity data
+const commodity = await client.Commodity().load({})
+console.log(commodity.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -99,10 +90,10 @@ The API exposes 4 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Commodity** | Precious-metal spot prices (Gold, Silver, Platinum, Palladium); exposed via `/api/commodities/rates` on the Pro tier. | `/api/commodities/historical/rates` |
-| **Currency** | The catalogue of supported fiat and cryptocurrency codes together with current exchange-rate and conversion operations against `/api/currencies`, `/api/rates` and `/api/convert`. | `/api/convert` |
-| **HistoricalCurrency** | Past exchange rates for a single date or a date range, served from `/api/historical/rates` and `/api/historical/timeseries` (forex history from 1999). | `/api/historical/timeseries` |
-| **VatRate** | EU-style value-added-tax rates covering roughly 120 countries, available to free-tier callers. | `/api/vat/rates` |
+| **Commodity** |  | `/api/commodities/historical/rates` |
+| **Currency** |  | `/api/convert` |
+| **HistoricalCurrency** |  | `/api/historical/timeseries` |
+| **VatRate** |  | `/api/vat/rates` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,15 +103,17 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from unirate_sdk import UnirateSDK
 
-client = UnirateSDK({})
+client = UnirateSDK({
+    "apikey": os.environ.get("UNIRATE_APIKEY"),
+})
 
 
 # Load a specific commodity
-commodity, err = client.Commodity(None).load(
-    {"id": "example_id"}, None
-)
+commodity, err = client.Commodity().load({"id": "example_id"})
+print(commodity)
 ```
 
 ### PHP
@@ -129,13 +122,14 @@ commodity, err = client.Commodity(None).load(
 <?php
 require_once 'unirate_sdk.php';
 
-$client = new UnirateSDK([]);
+$client = new UnirateSDK([
+    "apikey" => getenv("UNIRATE_APIKEY"),
+]);
 
 
 // Load a specific commodity
-[$commodity, $err] = $client->Commodity(null)->load(
-    ["id" => "example_id"], null
-);
+[$commodity, $err] = $client->Commodity()->load(["id" => "example_id"]);
+print_r($commodity);
 ```
 
 ### Golang
@@ -143,8 +137,13 @@ $client = new UnirateSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/unirate-sdk/go"
 
-client := sdk.NewUnirateSDK(map[string]any{})
+client := sdk.NewUnirateSDK(map[string]any{
+    "apikey": os.Getenv("UNIRATE_APIKEY"),
+})
 
+// Load commodity data
+commodity, err := client.Commodity(nil).Load(map[string]any{}, nil)
+fmt.Println(commodity)
 ```
 
 ### Ruby
@@ -152,13 +151,14 @@ client := sdk.NewUnirateSDK(map[string]any{})
 ```ruby
 require_relative "Unirate_sdk"
 
-client = UnirateSDK.new({})
+client = UnirateSDK.new({
+  "apikey" => ENV["UNIRATE_APIKEY"],
+})
 
 
 # Load a specific commodity
-commodity, err = client.Commodity(nil).load(
-  { "id" => "example_id" }, nil
-)
+commodity, err = client.Commodity().load({ "id" => "example_id" })
+puts commodity
 ```
 
 ### Lua
@@ -166,13 +166,14 @@ commodity, err = client.Commodity(nil).load(
 ```lua
 local sdk = require("unirate_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("UNIRATE_APIKEY"),
+})
 
 
 -- Load a specific commodity
-local commodity, err = client:Commodity(nil):load(
-  { id = "example_id" }, nil
-)
+local commodity, err = client:Commodity():load({ id = "example_id" })
+print(commodity)
 ```
 
 ## Unit testing in offline mode
@@ -191,25 +192,21 @@ const result = await client.Commodity().load({ id: 'test01' })
 ### Python
 
 ```python
-client = UnirateSDK.test(None, None)
-result, err = client.Commodity(None).load(
-    {"id": "test01"}, None
-)
+client = UnirateSDK.test()
+result, err = client.Commodity().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = UnirateSDK::test(null, null);
-[$result, $err] = $client->Commodity(null)->load(
-    ["id" => "test01"], null
-);
+$client = UnirateSDK::test();
+[$result, $err] = $client->Commodity()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Commodity(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -218,19 +215,15 @@ result, err := client.Commodity(nil).Load(
 ### Ruby
 
 ```ruby
-client = UnirateSDK.test(nil, nil)
-result, err = client.Commodity(nil).load(
-  { "id" => "test01" }, nil
-)
+client = UnirateSDK.test
+result, err = client.Commodity().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Commodity(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Commodity():load({ id = "test01" })
 ```
 
 ## How it works
@@ -334,16 +327,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the UniRate API
-
-- Upstream: [https://unirateapi.com/](https://unirateapi.com/)
-- API docs: [https://unirateapi.com/apidocs/](https://unirateapi.com/apidocs/)
-
-- UniRateAPI publishes its data "as is" for informational purposes — see the [terms page](https://unirateapi.com/) for the binding text.
-- Redistribution of the raw rate data is not permitted.
-- An API key is required; usage is governed by the per-plan rate limits set by UniRateAPI.
-- This SDK wraps the public HTTP API; it does not grant any additional rights to the underlying data.
 
 ---
 

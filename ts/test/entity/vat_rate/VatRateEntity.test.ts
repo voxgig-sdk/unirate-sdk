@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'UNIRATE_TEST_VAT_RATE_ENTID': idmap,
     'UNIRATE_TEST_LIVE': 'FALSE',
     'UNIRATE_TEST_EXPLAIN': 'FALSE',
+    'UNIRATE_APIKEY': 'NONE',
   })
 
   idmap = env['UNIRATE_TEST_VAT_RATE_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new UnirateSDK(merge([
       {
+        apikey: env.UNIRATE_APIKEY,
       },
       extra
     ]))

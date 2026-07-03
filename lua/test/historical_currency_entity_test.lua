@@ -91,6 +91,7 @@ function historical_currency_basic_setup(extra)
     ["UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID"] = idmap,
     ["UNIRATE_TEST_LIVE"] = "FALSE",
     ["UNIRATE_TEST_EXPLAIN"] = "FALSE",
+    ["UNIRATE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function historical_currency_basic_setup(extra)
   if env["UNIRATE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["UNIRATE_APIKEY"],
       },
       extra or {},
     })
