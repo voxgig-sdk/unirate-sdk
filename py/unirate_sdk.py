@@ -220,73 +220,33 @@ class UnirateSDK:
         }
 
 
-    @property
-    def commodity(self):
-        """Idiomatic facade: client.commodity.list() / client.commodity.load({"id": ...})."""
-        from entity.commodity_entity import CommodityEntity
-        cached = getattr(self, "_commodity", None)
-        if cached is None:
-            cached = CommodityEntity(self, None)
-            self._commodity = cached
-        return cached
-
-    def Commodity(self, data=None):
-        # Deprecated: use client.commodity instead.
+    def Commodity(self, data=None) -> "CommodityEntity":
+        """Entity factory: client.Commodity().list({}) / client.Commodity().load({"id": ...})."""
         from entity.commodity_entity import CommodityEntity
         return CommodityEntity(self, data)
 
 
-    @property
-    def currency(self):
-        """Idiomatic facade: client.currency.list() / client.currency.load({"id": ...})."""
-        from entity.currency_entity import CurrencyEntity
-        cached = getattr(self, "_currency", None)
-        if cached is None:
-            cached = CurrencyEntity(self, None)
-            self._currency = cached
-        return cached
-
-    def Currency(self, data=None):
-        # Deprecated: use client.currency instead.
+    def Currency(self, data=None) -> "CurrencyEntity":
+        """Entity factory: client.Currency().list({}) / client.Currency().load({"id": ...})."""
         from entity.currency_entity import CurrencyEntity
         return CurrencyEntity(self, data)
 
 
-    @property
-    def historical_currency(self):
-        """Idiomatic facade: client.historical_currency.list() / client.historical_currency.load({"id": ...})."""
-        from entity.historical_currency_entity import HistoricalCurrencyEntity
-        cached = getattr(self, "_historical_currency", None)
-        if cached is None:
-            cached = HistoricalCurrencyEntity(self, None)
-            self._historical_currency = cached
-        return cached
-
-    def HistoricalCurrency(self, data=None):
-        # Deprecated: use client.historical_currency instead.
+    def HistoricalCurrency(self, data=None) -> "HistoricalCurrencyEntity":
+        """Entity factory: client.HistoricalCurrency().list({}) / client.HistoricalCurrency().load({"id": ...})."""
         from entity.historical_currency_entity import HistoricalCurrencyEntity
         return HistoricalCurrencyEntity(self, data)
 
 
-    @property
-    def vat_rate(self):
-        """Idiomatic facade: client.vat_rate.list() / client.vat_rate.load({"id": ...})."""
-        from entity.vat_rate_entity import VatRateEntity
-        cached = getattr(self, "_vat_rate", None)
-        if cached is None:
-            cached = VatRateEntity(self, None)
-            self._vat_rate = cached
-        return cached
-
-    def VatRate(self, data=None):
-        # Deprecated: use client.vat_rate instead.
+    def VatRate(self, data=None) -> "VatRateEntity":
+        """Entity factory: client.VatRate().list({}) / client.VatRate().load({"id": ...})."""
         from entity.vat_rate_entity import VatRateEntity
         return VatRateEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "UnirateSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -306,3 +266,12 @@ class UnirateSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.commodity_entity import CommodityEntity
+    from entity.currency_entity import CurrencyEntity
+    from entity.historical_currency_entity import HistoricalCurrencyEntity
+    from entity.vat_rate_entity import VatRateEntity

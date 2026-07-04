@@ -26,9 +26,9 @@ import { UnirateSDK } from '@voxgig-sdk/unirate'
 
 const client = new UnirateSDK()
 
-// Load commodity data
-const commodity = await client.commodity.load({})
-console.log(commodity.data)
+// Load commodity data (returns a Commodity)
+const commodity = await client.Commodity().load()
+console.log(commodity)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -87,8 +87,8 @@ from unirate_sdk import UnirateSDK
 client = UnirateSDK()
 
 
-# Load a specific commodity
-commodity = client.commodity.load({"id": "example_id"})
+# Load a specific commodity (returns the record, raises on error)
+commodity = client.Commodity().load({"id": "example_id"})
 print(commodity)
 ```
 
@@ -101,8 +101,8 @@ require_once 'unirate_sdk.php';
 $client = new UnirateSDK();
 
 
-// Load a specific commodity
-$commodity = $client->commodity()->load(["id" => "example_id"]);
+// Load a specific commodity (returns the bare record; throws on error)
+$commodity = $client->Commodity()->load(["id" => "example_id"]);
 print_r($commodity);
 ```
 
@@ -126,8 +126,8 @@ require_relative "Unirate_sdk"
 client = UnirateSDK.new
 
 
-# Load a specific commodity
-commodity = client.commodity.load({ "id" => "example_id" })
+# Load a specific commodity (returns the bare record; raises on error)
+commodity = client.Commodity.load({ "id" => "example_id" })
 puts commodity
 ```
 
@@ -140,7 +140,7 @@ local client = sdk.new()
 
 
 -- Load a specific commodity
-local commodity, err = client:commodity():load({ id = "example_id" })
+local commodity, err = client:Commodity():load({ id = "example_id" })
 print(commodity)
 ```
 
@@ -153,22 +153,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = UnirateSDK.test()
-const result = await client.commodity.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const commodity = await client.Commodity().load({ id: 'test01' })
+// commodity is a bare Commodity populated with mock data
+console.log(commodity)
 ```
 
 ### Python
 
 ```python
 client = UnirateSDK.test()
-result = client.commodity.load({"id": "test01"})
+commodity = client.Commodity().load({"id": "test01"})
+print(commodity)
 ```
 
 ### PHP
 
 ```php
-$client = UnirateSDK::test();
-$result = $client->commodity()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = UnirateSDK::test([
+    "entity" => ["commodity" => ["test01" => ["id" => "test01"]]],
+]);
+$commodity = $client->Commodity()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -183,15 +188,18 @@ result, err := client.Commodity(nil).Load(
 ### Ruby
 
 ```ruby
-client = UnirateSDK.test
-result = client.commodity.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = UnirateSDK.test({
+  "entity" => { "commodity" => { "test01" => { "id" => "test01" } } },
+})
+commodity = client.Commodity.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:commodity():load({ id = "test01" })
+local result, err = client:Commodity():load({ id = "test01" })
 ```
 
 ## How it works
@@ -239,6 +247,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

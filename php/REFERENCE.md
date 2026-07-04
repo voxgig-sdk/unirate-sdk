@@ -97,7 +97,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CommodityEntity
 
 ```php
-$commodity = $client->commodity();
+$commodity = $client->Commodity();
 ```
 
 ### Operations
@@ -107,7 +107,7 @@ $commodity = $client->commodity();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->commodity()->load(["id" => "commodity_id"]);
+$result = $client->Commodity()->load(["id" => "commodity_id"]);
 ```
 
 ### Common Methods
@@ -143,7 +143,7 @@ Return the entity name.
 ## CurrencyEntity
 
 ```php
-$currency = $client->currency();
+$currency = $client->Currency();
 ```
 
 ### Operations
@@ -153,7 +153,7 @@ $currency = $client->currency();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->currency()->load(["id" => "currency_id"]);
+$result = $client->Currency()->load(["id" => "currency_id"]);
 ```
 
 ### Common Methods
@@ -189,7 +189,7 @@ Return the entity name.
 ## HistoricalCurrencyEntity
 
 ```php
-$historical_currency = $client->historical_currency();
+$historical_currency = $client->HistoricalCurrency();
 ```
 
 ### Operations
@@ -199,7 +199,7 @@ $historical_currency = $client->historical_currency();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->historical_currency()->load(["id" => "historical_currency_id"]);
+$result = $client->HistoricalCurrency()->load(["id" => "historical_currency_id"]);
 ```
 
 ### Common Methods
@@ -235,7 +235,7 @@ Return the entity name.
 ## VatRateEntity
 
 ```php
-$vat_rate = $client->vat_rate();
+$vat_rate = $client->VatRate();
 ```
 
 ### Operations
@@ -245,7 +245,7 @@ $vat_rate = $client->vat_rate();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->vat_rate()->load(["id" => "vat_rate_id"]);
+$result = $client->VatRate()->load(["id" => "vat_rate_id"]);
 ```
 
 ### Common Methods

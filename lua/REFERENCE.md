@@ -95,7 +95,7 @@ same parameters as `direct()`.
 ## CommodityEntity
 
 ```lua
-local commodity = client:commodity(nil)
+local commodity = client:Commodity(nil)
 ```
 
 ### Operations
@@ -105,7 +105,7 @@ local commodity = client:commodity(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:commodity():load({ id = "commodity_id" })
+local result, err = client:Commodity():load({ id = "commodity_id" })
 ```
 
 ### Common Methods
@@ -141,7 +141,7 @@ Return the entity name.
 ## CurrencyEntity
 
 ```lua
-local currency = client:currency(nil)
+local currency = client:Currency(nil)
 ```
 
 ### Operations
@@ -151,7 +151,7 @@ local currency = client:currency(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:currency():load({ id = "currency_id" })
+local result, err = client:Currency():load({ id = "currency_id" })
 ```
 
 ### Common Methods
@@ -187,7 +187,7 @@ Return the entity name.
 ## HistoricalCurrencyEntity
 
 ```lua
-local historical_currency = client:historical_currency(nil)
+local historical_currency = client:HistoricalCurrency(nil)
 ```
 
 ### Operations
@@ -197,7 +197,7 @@ local historical_currency = client:historical_currency(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:historical_currency():load({ id = "historical_currency_id" })
+local result, err = client:HistoricalCurrency():load({ id = "historical_currency_id" })
 ```
 
 ### Common Methods
@@ -233,7 +233,7 @@ Return the entity name.
 ## VatRateEntity
 
 ```lua
-local vat_rate = client:vat_rate(nil)
+local vat_rate = client:VatRate(nil)
 ```
 
 ### Operations
@@ -243,7 +243,7 @@ local vat_rate = client:vat_rate(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:vat_rate():load({ id = "vat_rate_id" })
+local result, err = client:VatRate():load({ id = "vat_rate_id" })
 ```
 
 ### Common Methods

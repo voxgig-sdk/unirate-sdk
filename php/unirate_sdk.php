@@ -233,10 +233,10 @@ class UnirateSDK
 
     private $_commodity = null;
 
-    // Idiomatic facade: $client->commodity()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Commodity() (PHP method
-    // names are case-insensitive).
-    public function commodity($data = null)
+    // Canonical facade: $client->Commodity()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->commodity()
+    // resolves here too.
+    public function Commodity($data = null)
     {
         require_once __DIR__ . '/entity/commodity_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class UnirateSDK
 
     private $_currency = null;
 
-    // Idiomatic facade: $client->currency()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Currency() (PHP method
-    // names are case-insensitive).
-    public function currency($data = null)
+    // Canonical facade: $client->Currency()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->currency()
+    // resolves here too.
+    public function Currency($data = null)
     {
         require_once __DIR__ . '/entity/currency_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class UnirateSDK
 
     private $_historical_currency = null;
 
-    // Idiomatic facade: $client->historical_currency()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias HistoricalCurrency() (PHP method
-    // names are case-insensitive).
-    public function historical_currency($data = null)
+    // Canonical facade: $client->HistoricalCurrency()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->historical_currency()
+    // resolves here too.
+    public function HistoricalCurrency($data = null)
     {
         require_once __DIR__ . '/entity/historical_currency_entity.php';
         if ($data === null) {
@@ -287,10 +287,10 @@ class UnirateSDK
 
     private $_vat_rate = null;
 
-    // Idiomatic facade: $client->vat_rate()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias VatRate() (PHP method
-    // names are case-insensitive).
-    public function vat_rate($data = null)
+    // Canonical facade: $client->VatRate()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->vat_rate()
+    // resolves here too.
+    public function VatRate($data = null)
     {
         require_once __DIR__ . '/entity/vat_rate_entity.php';
         if ($data === null) {

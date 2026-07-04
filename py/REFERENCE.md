@@ -92,7 +92,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CommodityEntity
 
 ```python
-commodity = client.commodity
+commodity = client.Commodity()
 ```
 
 ### Operations
@@ -102,7 +102,7 @@ commodity = client.commodity
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.commodity.load({"id": "commodity_id"})
+result = client.Commodity().load({"id": "commodity_id"})
 ```
 
 ### Common Methods
@@ -137,7 +137,7 @@ Return the entity name.
 ## CurrencyEntity
 
 ```python
-currency = client.currency
+currency = client.Currency()
 ```
 
 ### Operations
@@ -147,7 +147,7 @@ currency = client.currency
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.currency.load({"id": "currency_id"})
+result = client.Currency().load({"id": "currency_id"})
 ```
 
 ### Common Methods
@@ -182,7 +182,7 @@ Return the entity name.
 ## HistoricalCurrencyEntity
 
 ```python
-historical_currency = client.historical_currency
+historical_currency = client.HistoricalCurrency()
 ```
 
 ### Operations
@@ -192,7 +192,7 @@ historical_currency = client.historical_currency
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.historical_currency.load({"id": "historical_currency_id"})
+result = client.HistoricalCurrency().load({"id": "historical_currency_id"})
 ```
 
 ### Common Methods
@@ -227,7 +227,7 @@ Return the entity name.
 ## VatRateEntity
 
 ```python
-vat_rate = client.vat_rate
+vat_rate = client.VatRate()
 ```
 
 ### Operations
@@ -237,7 +237,7 @@ vat_rate = client.vat_rate
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.vat_rate.load({"id": "vat_rate_id"})
+result = client.VatRate().load({"id": "vat_rate_id"})
 ```
 
 ### Common Methods

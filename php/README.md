@@ -33,9 +33,10 @@ $client = new UnirateSDK();
 
 ```php
 try {
-    $result = $client->commodity()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Commodity record (throws on error).
+    $commodity = $client->Commodity()->load(["id" => "example_id"]);
+    print_r($commodity);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = UnirateSDK::test();
+$client = UnirateSDK::test([
+    "entity" => ["commodity" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->commodity()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$commodity = $client->Commodity()->load(["id" => "test01"]);
+print_r($commodity);
 ```
 
 ### Use a custom fetch function
@@ -252,7 +257,7 @@ API path: `/api/vat/rates`
 
 ### Commodity
 
-Create an instance: `const commodity = client.commodity`
+Create an instance: `$commodity = $client->Commodity();`
 
 #### Operations
 
@@ -262,14 +267,15 @@ Create an instance: `const commodity = client.commodity`
 
 #### Example: Load
 
-```ts
-const commodity = await client.commodity.load({ id: 'commodity_id' })
+```php
+// load() returns the bare Commodity record (throws on error).
+$commodity = $client->Commodity()->load(["id" => "commodity_id"]);
 ```
 
 
 ### Currency
 
-Create an instance: `const currency = client.currency`
+Create an instance: `$currency = $client->Currency();`
 
 #### Operations
 
@@ -279,14 +285,15 @@ Create an instance: `const currency = client.currency`
 
 #### Example: Load
 
-```ts
-const currency = await client.currency.load({ id: 'currency_id' })
+```php
+// load() returns the bare Currency record (throws on error).
+$currency = $client->Currency()->load(["id" => "currency_id"]);
 ```
 
 
 ### HistoricalCurrency
 
-Create an instance: `const historical_currency = client.historical_currency`
+Create an instance: `$historical_currency = $client->HistoricalCurrency();`
 
 #### Operations
 
@@ -296,14 +303,15 @@ Create an instance: `const historical_currency = client.historical_currency`
 
 #### Example: Load
 
-```ts
-const historical_currency = await client.historical_currency.load({ id: 'historical_currency_id' })
+```php
+// load() returns the bare HistoricalCurrency record (throws on error).
+$historical_currency = $client->HistoricalCurrency()->load(["id" => "historical_currency_id"]);
 ```
 
 
 ### VatRate
 
-Create an instance: `const vat_rate = client.vat_rate`
+Create an instance: `$vat_rate = $client->VatRate();`
 
 #### Operations
 
@@ -313,8 +321,9 @@ Create an instance: `const vat_rate = client.vat_rate`
 
 #### Example: Load
 
-```ts
-const vat_rate = await client.vat_rate.load({ id: 'vat_rate_id' })
+```php
+// load() returns the bare VatRate record (throws on error).
+$vat_rate = $client->VatRate()->load(["id" => "vat_rate_id"]);
 ```
 
 
@@ -389,7 +398,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$commodity = $client->commodity();
+$commodity = $client->Commodity();
 $commodity->load(["id" => "example_id"]);
 
 // $commodity->dataGet() now returns the loaded commodity data

@@ -34,9 +34,9 @@ local client = sdk.new()
 ### 3. Load a commodity
 
 ```lua
-local result, err = client:commodity():load({ id = "example_id" })
+local commodity, err = client:Commodity():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(commodity)
 ```
 
 
@@ -82,8 +82,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:commodity():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:Commodity():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -186,17 +186,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local commodity, err = client:Commodity():load({ id = "example_id" })
+    if err then error(err) end
+    -- commodity is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -243,7 +248,7 @@ API path: `/api/vat/rates`
 
 ### Commodity
 
-Create an instance: `const commodity = client.commodity`
+Create an instance: `local commodity = client:Commodity(nil)`
 
 #### Operations
 
@@ -253,14 +258,14 @@ Create an instance: `const commodity = client.commodity`
 
 #### Example: Load
 
-```ts
-const commodity = await client.commodity.load({ id: 'commodity_id' })
+```lua
+local commodity, err = client:Commodity():load({ id = "commodity_id" })
 ```
 
 
 ### Currency
 
-Create an instance: `const currency = client.currency`
+Create an instance: `local currency = client:Currency(nil)`
 
 #### Operations
 
@@ -270,14 +275,14 @@ Create an instance: `const currency = client.currency`
 
 #### Example: Load
 
-```ts
-const currency = await client.currency.load({ id: 'currency_id' })
+```lua
+local currency, err = client:Currency():load({ id = "currency_id" })
 ```
 
 
 ### HistoricalCurrency
 
-Create an instance: `const historical_currency = client.historical_currency`
+Create an instance: `local historical_currency = client:HistoricalCurrency(nil)`
 
 #### Operations
 
@@ -287,14 +292,14 @@ Create an instance: `const historical_currency = client.historical_currency`
 
 #### Example: Load
 
-```ts
-const historical_currency = await client.historical_currency.load({ id: 'historical_currency_id' })
+```lua
+local historical_currency, err = client:HistoricalCurrency():load({ id = "historical_currency_id" })
 ```
 
 
 ### VatRate
 
-Create an instance: `const vat_rate = client.vat_rate`
+Create an instance: `local vat_rate = client:VatRate(nil)`
 
 #### Operations
 
@@ -304,8 +309,8 @@ Create an instance: `const vat_rate = client.vat_rate`
 
 #### Example: Load
 
-```ts
-const vat_rate = await client.vat_rate.load({ id: 'vat_rate_id' })
+```lua
+local vat_rate, err = client:VatRate():load({ id = "vat_rate_id" })
 ```
 
 
@@ -380,7 +385,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local commodity = client:commodity()
+local commodity = client:Commodity()
 commodity:load({ id = "example_id" })
 
 -- commodity:data_get() now returns the loaded commodity data

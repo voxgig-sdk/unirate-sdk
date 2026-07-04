@@ -208,52 +208,28 @@ class UnirateSDK
   end
 
 
-  # Idiomatic facade: client.commodity.list / client.commodity.load({ "id" => ... })
-  def commodity
-    require_relative 'entity/commodity_entity'
-    @commodity ||= CommodityEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.commodity instead.
+  # Canonical facade: client.Commodity.list / client.Commodity.load({ "id" => ... })
   def Commodity(data = nil)
     require_relative 'entity/commodity_entity'
     CommodityEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.currency.list / client.currency.load({ "id" => ... })
-  def currency
-    require_relative 'entity/currency_entity'
-    @currency ||= CurrencyEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.currency instead.
+  # Canonical facade: client.Currency.list / client.Currency.load({ "id" => ... })
   def Currency(data = nil)
     require_relative 'entity/currency_entity'
     CurrencyEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.historical_currency.list / client.historical_currency.load({ "id" => ... })
-  def historical_currency
-    require_relative 'entity/historical_currency_entity'
-    @historical_currency ||= HistoricalCurrencyEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.historical_currency instead.
+  # Canonical facade: client.HistoricalCurrency.list / client.HistoricalCurrency.load({ "id" => ... })
   def HistoricalCurrency(data = nil)
     require_relative 'entity/historical_currency_entity'
     HistoricalCurrencyEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.vat_rate.list / client.vat_rate.load({ "id" => ... })
-  def vat_rate
-    require_relative 'entity/vat_rate_entity'
-    @vat_rate ||= VatRateEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.vat_rate instead.
+  # Canonical facade: client.VatRate.list / client.VatRate.load({ "id" => ... })
   def VatRate(data = nil)
     require_relative 'entity/vat_rate_entity'
     VatRateEntity.new(self, data)

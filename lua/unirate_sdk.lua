@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:commodity():list() / client:commodity():load({ id = ... })
-function UnirateSDK:commodity(data)
+-- Idiomatic facade: client:Commodity():list() / client:Commodity():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function UnirateSDK:Commodity(data)
   local EntityMod = require("entity.commodity_entity")
   if data == nil then
     if self._commodity == nil then
@@ -256,15 +257,10 @@ function UnirateSDK:commodity(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:commodity() instead.
-function UnirateSDK:Commodity(data)
-  local EntityMod = require("entity.commodity_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:currency():list() / client:currency():load({ id = ... })
-function UnirateSDK:currency(data)
+-- Idiomatic facade: client:Currency():list() / client:Currency():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function UnirateSDK:Currency(data)
   local EntityMod = require("entity.currency_entity")
   if data == nil then
     if self._currency == nil then
@@ -275,15 +271,10 @@ function UnirateSDK:currency(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:currency() instead.
-function UnirateSDK:Currency(data)
-  local EntityMod = require("entity.currency_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:historical_currency():list() / client:historical_currency():load({ id = ... })
-function UnirateSDK:historical_currency(data)
+-- Idiomatic facade: client:HistoricalCurrency():list() / client:HistoricalCurrency():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function UnirateSDK:HistoricalCurrency(data)
   local EntityMod = require("entity.historical_currency_entity")
   if data == nil then
     if self._historical_currency == nil then
@@ -294,15 +285,10 @@ function UnirateSDK:historical_currency(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:historical_currency() instead.
-function UnirateSDK:HistoricalCurrency(data)
-  local EntityMod = require("entity.historical_currency_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:vat_rate():list() / client:vat_rate():load({ id = ... })
-function UnirateSDK:vat_rate(data)
+-- Idiomatic facade: client:VatRate():list() / client:VatRate():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function UnirateSDK:VatRate(data)
   local EntityMod = require("entity.vat_rate_entity")
   if data == nil then
     if self._vat_rate == nil then
@@ -310,12 +296,6 @@ function UnirateSDK:vat_rate(data)
     end
     return self._vat_rate
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:vat_rate() instead.
-function UnirateSDK:VatRate(data)
-  local EntityMod = require("entity.vat_rate_entity")
   return EntityMod.new(self, data)
 end
 

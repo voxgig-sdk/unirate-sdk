@@ -145,7 +145,7 @@ Alias for `UnirateSDK.test()`.
 ## CommodityEntity
 
 ```ts
-const commodity = client.commodity
+const commodity = client.Commodity()
 ```
 
 ### Operations
@@ -155,7 +155,7 @@ const commodity = client.commodity
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.commodity.load({ id: 'commodity_id' })
+const result = await client.Commodity().load({ id: 'commodity_id' })
 ```
 
 ### Common Methods
@@ -189,7 +189,7 @@ Return a copy of the entity options.
 ## CurrencyEntity
 
 ```ts
-const currency = client.currency
+const currency = client.Currency()
 ```
 
 ### Operations
@@ -199,7 +199,7 @@ const currency = client.currency
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.currency.load({ id: 'currency_id' })
+const result = await client.Currency().load({ id: 'currency_id' })
 ```
 
 ### Common Methods
@@ -233,7 +233,7 @@ Return a copy of the entity options.
 ## HistoricalCurrencyEntity
 
 ```ts
-const historical_currency = client.historical_currency
+const historical_currency = client.HistoricalCurrency()
 ```
 
 ### Operations
@@ -243,7 +243,7 @@ const historical_currency = client.historical_currency
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.historical_currency.load({ id: 'historical_currency_id' })
+const result = await client.HistoricalCurrency().load({ id: 'historical_currency_id' })
 ```
 
 ### Common Methods
@@ -277,7 +277,7 @@ Return a copy of the entity options.
 ## VatRateEntity
 
 ```ts
-const vat_rate = client.vat_rate
+const vat_rate = client.VatRate()
 ```
 
 ### Operations
@@ -287,7 +287,7 @@ const vat_rate = client.vat_rate
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.vat_rate.load({ id: 'vat_rate_id' })
+const result = await client.VatRate().load({ id: 'vat_rate_id' })
 ```
 
 ### Common Methods
