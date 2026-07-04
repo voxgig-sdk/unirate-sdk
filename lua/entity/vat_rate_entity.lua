@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch VatRateLoadMatch
+---@param ctrl? table
+---@return VatRate
+---@return string? err
 function VatRateEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -146,7 +145,7 @@ Alias for `UnirateSDK.test()`.
 ## CommodityEntity
 
 ```ts
-const commodity = client.Commodity()
+const commodity = client.commodity
 ```
 
 ### Operations
@@ -156,7 +155,7 @@ const commodity = client.Commodity()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Commodity().load({ id: 'commodity_id' })
+const result = await client.commodity.load({ id: 'commodity_id' })
 ```
 
 ### Common Methods
@@ -190,7 +189,7 @@ Return a copy of the entity options.
 ## CurrencyEntity
 
 ```ts
-const currency = client.Currency()
+const currency = client.currency
 ```
 
 ### Operations
@@ -200,7 +199,7 @@ const currency = client.Currency()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Currency().load({ id: 'currency_id' })
+const result = await client.currency.load({ id: 'currency_id' })
 ```
 
 ### Common Methods
@@ -234,7 +233,7 @@ Return a copy of the entity options.
 ## HistoricalCurrencyEntity
 
 ```ts
-const historical_currency = client.HistoricalCurrency()
+const historical_currency = client.historical_currency
 ```
 
 ### Operations
@@ -244,7 +243,7 @@ const historical_currency = client.HistoricalCurrency()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.HistoricalCurrency().load({ id: 'historical_currency_id' })
+const result = await client.historical_currency.load({ id: 'historical_currency_id' })
 ```
 
 ### Common Methods
@@ -278,7 +277,7 @@ Return a copy of the entity options.
 ## VatRateEntity
 
 ```ts
-const vat_rate = client.VatRate()
+const vat_rate = client.vat_rate
 ```
 
 ### Operations
@@ -288,7 +287,7 @@ const vat_rate = client.VatRate()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.VatRate().load({ id: 'vat_rate_id' })
+const result = await client.vat_rate.load({ id: 'vat_rate_id' })
 ```
 
 ### Common Methods

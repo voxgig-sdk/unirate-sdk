@@ -245,21 +245,33 @@ func (sdk *UnirateSDK) Direct(fetchargs map[string]any) (map[string]any, error) 
 }
 
 
+// Commodity returns a Commodity entity bound to this client.
+// Idiomatic usage: client.Commodity(nil).List(nil, nil) or
+// client.Commodity(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UnirateSDK) Commodity(data map[string]any) UnirateEntity {
 	return NewCommodityEntityFunc(sdk, data)
 }
 
 
+// Currency returns a Currency entity bound to this client.
+// Idiomatic usage: client.Currency(nil).List(nil, nil) or
+// client.Currency(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UnirateSDK) Currency(data map[string]any) UnirateEntity {
 	return NewCurrencyEntityFunc(sdk, data)
 }
 
 
+// HistoricalCurrency returns a HistoricalCurrency entity bound to this client.
+// Idiomatic usage: client.HistoricalCurrency(nil).List(nil, nil) or
+// client.HistoricalCurrency(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UnirateSDK) HistoricalCurrency(data map[string]any) UnirateEntity {
 	return NewHistoricalCurrencyEntityFunc(sdk, data)
 }
 
 
+// VatRate returns a VatRate entity bound to this client.
+// Idiomatic usage: client.VatRate(nil).List(nil, nil) or
+// client.VatRate(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *UnirateSDK) VatRate(data map[string]any) UnirateEntity {
 	return NewVatRateEntityFunc(sdk, data)
 }

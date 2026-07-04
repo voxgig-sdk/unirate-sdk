@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch CommodityLoadMatch
+---@param ctrl? table
+---@return Commodity
+---@return string? err
 function CommodityEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

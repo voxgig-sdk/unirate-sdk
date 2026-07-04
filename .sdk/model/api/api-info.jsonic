@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       description: "API for currency conversion and exchange rates with historical data"
       servers: [
         {

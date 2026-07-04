@@ -45,6 +45,7 @@ class CommodityEntity
     end
   end
 
+  # @return [Commodity, Hash] the current Commodity data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class CommodityEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Commodity fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Commodity.
+  #
+  # @param reqmatch [CommodityLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Commodity, Hash] the loaded Commodity; raises UnirateError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

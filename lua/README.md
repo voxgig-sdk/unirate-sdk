@@ -9,12 +9,9 @@ The Lua SDK for the Unirate API — an entity-oriented client using Lua conventi
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-unirate
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/unirate-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("unirate_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("UNIRATE_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 3. Load a commodity
 
 ```lua
-local result, err = client:Commodity():load({ id = "example_id" })
+local result, err = client:commodity():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -87,7 +82,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:Unirate():load({ id = "test01" })
+local result, err = client:commodity():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -121,7 +116,6 @@ Create a `.env.local` file at the project root:
 
 ```
 UNIRATE_TEST_LIVE=TRUE
-UNIRATE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -144,7 +138,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -250,7 +243,7 @@ API path: `/api/vat/rates`
 
 ### Commodity
 
-Create an instance: `const commodity = client.Commodity()`
+Create an instance: `const commodity = client.commodity`
 
 #### Operations
 
@@ -261,13 +254,13 @@ Create an instance: `const commodity = client.Commodity()`
 #### Example: Load
 
 ```ts
-const commodity = await client.Commodity().load({ id: 'commodity_id' })
+const commodity = await client.commodity.load({ id: 'commodity_id' })
 ```
 
 
 ### Currency
 
-Create an instance: `const currency = client.Currency()`
+Create an instance: `const currency = client.currency`
 
 #### Operations
 
@@ -278,13 +271,13 @@ Create an instance: `const currency = client.Currency()`
 #### Example: Load
 
 ```ts
-const currency = await client.Currency().load({ id: 'currency_id' })
+const currency = await client.currency.load({ id: 'currency_id' })
 ```
 
 
 ### HistoricalCurrency
 
-Create an instance: `const historical_currency = client.HistoricalCurrency()`
+Create an instance: `const historical_currency = client.historical_currency`
 
 #### Operations
 
@@ -295,13 +288,13 @@ Create an instance: `const historical_currency = client.HistoricalCurrency()`
 #### Example: Load
 
 ```ts
-const historical_currency = await client.HistoricalCurrency().load({ id: 'historical_currency_id' })
+const historical_currency = await client.historical_currency.load({ id: 'historical_currency_id' })
 ```
 
 
 ### VatRate
 
-Create an instance: `const vat_rate = client.VatRate()`
+Create an instance: `const vat_rate = client.vat_rate`
 
 #### Operations
 
@@ -312,7 +305,7 @@ Create an instance: `const vat_rate = client.VatRate()`
 #### Example: Load
 
 ```ts
-const vat_rate = await client.VatRate().load({ id: 'vat_rate_id' })
+const vat_rate = await client.vat_rate.load({ id: 'vat_rate_id' })
 ```
 
 
@@ -387,11 +380,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local commodity = client:commodity()
+commodity:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- commodity:data_get() now returns the loaded commodity data
+-- commodity:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

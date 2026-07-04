@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  VatRate,
+  VatRateLoadMatch,
+} from '../UnirateTypes'
 
 // TODO: needs Entity superclass
-class VatRateEntity extends UnirateEntityBase {
+class VatRateEntity extends UnirateEntityBase<VatRate> {
 
   constructor(client: UnirateSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class VatRateEntity extends UnirateEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: VatRateLoadMatch, ctrl?: Control): Promise<VatRate> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class VatRateEntity extends UnirateEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<VatRate> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

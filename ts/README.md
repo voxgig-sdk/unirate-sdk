@@ -9,9 +9,12 @@ The TypeScript SDK for the Unirate API — a type-safe, entity-oriented client w
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/unirate
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/unirate-sdk/releases](https://github.com/voxgig-sdk/unirate-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { UnirateSDK } from 'unirate'
+import { UnirateSDK } from '@voxgig-sdk/unirate'
 
-const client = new UnirateSDK({
-  apikey: process.env.UNIRATE_APIKEY,
-})
+const client = new UnirateSDK()
 ```
 
 ### 3. Load a commodity
 
 ```ts
-const result = await client.Commodity().load({ id: 'example_id' })
+const result = await client.commodity.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = UnirateSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.commodity.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new UnirateSDK({ apikey: '...' })
+const client = new UnirateSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.commodity
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new UnirateSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -134,7 +134,6 @@ Create a `.env.local` file at the project root:
 
 ```
 UNIRATE_TEST_LIVE=TRUE
-UNIRATE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new UnirateSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new UnirateSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -295,7 +292,7 @@ API path: `/api/vat/rates`
 
 ### Commodity
 
-Create an instance: `const commodity = client.Commodity()`
+Create an instance: `const commodity = client.commodity`
 
 #### Operations
 
@@ -306,13 +303,13 @@ Create an instance: `const commodity = client.Commodity()`
 #### Example: Load
 
 ```ts
-const commodity = await client.Commodity().load({ id: 'commodity_id' })
+const commodity = await client.commodity.load({ id: 'commodity_id' })
 ```
 
 
 ### Currency
 
-Create an instance: `const currency = client.Currency()`
+Create an instance: `const currency = client.currency`
 
 #### Operations
 
@@ -323,13 +320,13 @@ Create an instance: `const currency = client.Currency()`
 #### Example: Load
 
 ```ts
-const currency = await client.Currency().load({ id: 'currency_id' })
+const currency = await client.currency.load({ id: 'currency_id' })
 ```
 
 
 ### HistoricalCurrency
 
-Create an instance: `const historical_currency = client.HistoricalCurrency()`
+Create an instance: `const historical_currency = client.historical_currency`
 
 #### Operations
 
@@ -340,13 +337,13 @@ Create an instance: `const historical_currency = client.HistoricalCurrency()`
 #### Example: Load
 
 ```ts
-const historical_currency = await client.HistoricalCurrency().load({ id: 'historical_currency_id' })
+const historical_currency = await client.historical_currency.load({ id: 'historical_currency_id' })
 ```
 
 
 ### VatRate
 
-Create an instance: `const vat_rate = client.VatRate()`
+Create an instance: `const vat_rate = client.vat_rate`
 
 #### Operations
 
@@ -357,7 +354,7 @@ Create an instance: `const vat_rate = client.VatRate()`
 #### Example: Load
 
 ```ts
-const vat_rate = await client.VatRate().load({ id: 'vat_rate_id' })
+const vat_rate = await client.vat_rate.load({ id: 'vat_rate_id' })
 ```
 
 
@@ -418,7 +415,7 @@ unirate/
 Import the SDK from the package root:
 
 ```ts
-import { UnirateSDK } from 'unirate'
+import { UnirateSDK } from '@voxgig-sdk/unirate'
 ```
 
 ### Entity state
@@ -428,11 +425,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const commodity = client.commodity
+await commodity.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// commodity.data() now returns the loaded commodity data
+// commodity.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

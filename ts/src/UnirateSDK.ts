@@ -5,6 +5,8 @@ import { CurrencyEntity } from './entity/CurrencyEntity'
 import { HistoricalCurrencyEntity } from './entity/HistoricalCurrencyEntity'
 import { VatRateEntity } from './entity/VatRateEntity'
 
+export type * from './UnirateTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -205,24 +207,56 @@ class UnirateSDK {
 
 
 
+  _commodity?: CommodityEntity
+
+  // Idiomatic facade: `client.commodity.list()` / `client.commodity.load({ id })`.
+  get commodity(): CommodityEntity {
+    return (this._commodity ??= new CommodityEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.commodity` instead. */
   Commodity(data?: any) {
     const self = this
     return new CommodityEntity(self,data)
   }
 
 
+  _currency?: CurrencyEntity
+
+  // Idiomatic facade: `client.currency.list()` / `client.currency.load({ id })`.
+  get currency(): CurrencyEntity {
+    return (this._currency ??= new CurrencyEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.currency` instead. */
   Currency(data?: any) {
     const self = this
     return new CurrencyEntity(self,data)
   }
 
 
+  _historical_currency?: HistoricalCurrencyEntity
+
+  // Idiomatic facade: `client.historical_currency.list()` / `client.historical_currency.load({ id })`.
+  get historical_currency(): HistoricalCurrencyEntity {
+    return (this._historical_currency ??= new HistoricalCurrencyEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.historical_currency` instead. */
   HistoricalCurrency(data?: any) {
     const self = this
     return new HistoricalCurrencyEntity(self,data)
   }
 
 
+  _vat_rate?: VatRateEntity
+
+  // Idiomatic facade: `client.vat_rate.list()` / `client.vat_rate.load({ id })`.
+  get vat_rate(): VatRateEntity {
+    return (this._vat_rate ??= new VatRateEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.vat_rate` instead. */
   VatRate(data?: any) {
     const self = this
     return new VatRateEntity(self,data)

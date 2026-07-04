@@ -45,6 +45,7 @@ class VatRateEntity
     end
   end
 
+  # @return [VatRate, Hash] the current VatRate data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class VatRateEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of VatRate fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single VatRate.
+  #
+  # @param reqmatch [VatRateLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [VatRate, Hash] the loaded VatRate; raises UnirateError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

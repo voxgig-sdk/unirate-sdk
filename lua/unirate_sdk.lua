@@ -244,24 +244,76 @@ end
 
 
 
+-- Idiomatic facade: client:commodity():list() / client:commodity():load({ id = ... })
+function UnirateSDK:commodity(data)
+  local EntityMod = require("entity.commodity_entity")
+  if data == nil then
+    if self._commodity == nil then
+      self._commodity = EntityMod.new(self, nil)
+    end
+    return self._commodity
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:commodity() instead.
 function UnirateSDK:Commodity(data)
   local EntityMod = require("entity.commodity_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:currency():list() / client:currency():load({ id = ... })
+function UnirateSDK:currency(data)
+  local EntityMod = require("entity.currency_entity")
+  if data == nil then
+    if self._currency == nil then
+      self._currency = EntityMod.new(self, nil)
+    end
+    return self._currency
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:currency() instead.
 function UnirateSDK:Currency(data)
   local EntityMod = require("entity.currency_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:historical_currency():list() / client:historical_currency():load({ id = ... })
+function UnirateSDK:historical_currency(data)
+  local EntityMod = require("entity.historical_currency_entity")
+  if data == nil then
+    if self._historical_currency == nil then
+      self._historical_currency = EntityMod.new(self, nil)
+    end
+    return self._historical_currency
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:historical_currency() instead.
 function UnirateSDK:HistoricalCurrency(data)
   local EntityMod = require("entity.historical_currency_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:vat_rate():list() / client:vat_rate():load({ id = ... })
+function UnirateSDK:vat_rate(data)
+  local EntityMod = require("entity.vat_rate_entity")
+  if data == nil then
+    if self._vat_rate == nil then
+      self._vat_rate = EntityMod.new(self, nil)
+    end
+    return self._vat_rate
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:vat_rate() instead.
 function UnirateSDK:VatRate(data)
   local EntityMod = require("entity.vat_rate_entity")
   return EntityMod.new(self, data)

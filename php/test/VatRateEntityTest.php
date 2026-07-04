@@ -49,8 +49,7 @@ class VatRateEntityTest extends TestCase
         // LOAD
         $vat_rate_ref01_ent = $client->VatRate(null);
         $vat_rate_ref01_match_dt0 = [];
-        [$vat_rate_ref01_data_dt0_loaded, $err] = $vat_rate_ref01_ent->load($vat_rate_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $vat_rate_ref01_data_dt0_loaded = $vat_rate_ref01_ent->load($vat_rate_ref01_match_dt0, null);
         $this->assertNotNull($vat_rate_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function vat_rate_basic_setup($extra)
         "UNIRATE_TEST_VAT_RATE_ENTID" => $idmap,
         "UNIRATE_TEST_LIVE" => "FALSE",
         "UNIRATE_TEST_EXPLAIN" => "FALSE",
-        "UNIRATE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function vat_rate_basic_setup($extra)
     if ($env["UNIRATE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["UNIRATE_APIKEY"],
             ],
             $extra ?? [],
         ]);

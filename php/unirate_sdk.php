@@ -103,7 +103,7 @@ class UnirateSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class UnirateSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class UnirateSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,45 +216,89 @@ class UnirateSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function Commodity($data = null)
+    private $_commodity = null;
+
+    // Idiomatic facade: $client->commodity()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Commodity() (PHP method
+    // names are case-insensitive).
+    public function commodity($data = null)
     {
         require_once __DIR__ . '/entity/commodity_entity.php';
+        if ($data === null) {
+            if ($this->_commodity === null) {
+                $this->_commodity = new CommodityEntity($this, null);
+            }
+            return $this->_commodity;
+        }
         return new CommodityEntity($this, $data);
     }
 
 
-    public function Currency($data = null)
+    private $_currency = null;
+
+    // Idiomatic facade: $client->currency()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias Currency() (PHP method
+    // names are case-insensitive).
+    public function currency($data = null)
     {
         require_once __DIR__ . '/entity/currency_entity.php';
+        if ($data === null) {
+            if ($this->_currency === null) {
+                $this->_currency = new CurrencyEntity($this, null);
+            }
+            return $this->_currency;
+        }
         return new CurrencyEntity($this, $data);
     }
 
 
-    public function HistoricalCurrency($data = null)
+    private $_historical_currency = null;
+
+    // Idiomatic facade: $client->historical_currency()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias HistoricalCurrency() (PHP method
+    // names are case-insensitive).
+    public function historical_currency($data = null)
     {
         require_once __DIR__ . '/entity/historical_currency_entity.php';
+        if ($data === null) {
+            if ($this->_historical_currency === null) {
+                $this->_historical_currency = new HistoricalCurrencyEntity($this, null);
+            }
+            return $this->_historical_currency;
+        }
         return new HistoricalCurrencyEntity($this, $data);
     }
 
 
-    public function VatRate($data = null)
+    private $_vat_rate = null;
+
+    // Idiomatic facade: $client->vat_rate()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias VatRate() (PHP method
+    // names are case-insensitive).
+    public function vat_rate($data = null)
     {
         require_once __DIR__ . '/entity/vat_rate_entity.php';
+        if ($data === null) {
+            if ($this->_vat_rate === null) {
+                $this->_vat_rate = new VatRateEntity($this, null);
+            }
+            return $this->_vat_rate;
+        }
         return new VatRateEntity($this, $data);
     }
 

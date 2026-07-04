@@ -49,8 +49,7 @@ class HistoricalCurrencyEntityTest extends TestCase
         // LOAD
         $historical_currency_ref01_ent = $client->HistoricalCurrency(null);
         $historical_currency_ref01_match_dt0 = [];
-        [$historical_currency_ref01_data_dt0_loaded, $err] = $historical_currency_ref01_ent->load($historical_currency_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $historical_currency_ref01_data_dt0_loaded = $historical_currency_ref01_ent->load($historical_currency_ref01_match_dt0, null);
         $this->assertNotNull($historical_currency_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function historical_currency_basic_setup($extra)
         "UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID" => $idmap,
         "UNIRATE_TEST_LIVE" => "FALSE",
         "UNIRATE_TEST_EXPLAIN" => "FALSE",
-        "UNIRATE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function historical_currency_basic_setup($extra)
     if ($env["UNIRATE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["UNIRATE_APIKEY"],
             ],
             $extra ?? [],
         ]);

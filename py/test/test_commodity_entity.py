@@ -49,8 +49,7 @@ class TestCommodityEntity:
         # LOAD
         commodity_ref01_ent = client.Commodity(None)
         commodity_ref01_match_dt0 = {}
-        commodity_ref01_data_dt0_loaded, err = commodity_ref01_ent.load(commodity_ref01_match_dt0, None)
-        assert err is None
+        commodity_ref01_data_dt0_loaded = commodity_ref01_ent.load(commodity_ref01_match_dt0, None)
         assert commodity_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _commodity_basic_setup(extra):
         "UNIRATE_TEST_COMMODITY_ENTID": idmap,
         "UNIRATE_TEST_LIVE": "FALSE",
         "UNIRATE_TEST_EXPLAIN": "FALSE",
-        "UNIRATE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _commodity_basic_setup(extra):
     if env.get("UNIRATE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("UNIRATE_APIKEY"),
             },
             extra or {},
         ])

@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  HistoricalCurrency,
+  HistoricalCurrencyLoadMatch,
+} from '../UnirateTypes'
 
 // TODO: needs Entity superclass
-class HistoricalCurrencyEntity extends UnirateEntityBase {
+class HistoricalCurrencyEntity extends UnirateEntityBase<HistoricalCurrency> {
 
   constructor(client: UnirateSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class HistoricalCurrencyEntity extends UnirateEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: HistoricalCurrencyLoadMatch, ctrl?: Control): Promise<HistoricalCurrency> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class HistoricalCurrencyEntity extends UnirateEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<HistoricalCurrency> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

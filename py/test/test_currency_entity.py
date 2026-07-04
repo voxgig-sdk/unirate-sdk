@@ -49,8 +49,7 @@ class TestCurrencyEntity:
         # LOAD
         currency_ref01_ent = client.Currency(None)
         currency_ref01_match_dt0 = {}
-        currency_ref01_data_dt0_loaded, err = currency_ref01_ent.load(currency_ref01_match_dt0, None)
-        assert err is None
+        currency_ref01_data_dt0_loaded = currency_ref01_ent.load(currency_ref01_match_dt0, None)
         assert currency_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _currency_basic_setup(extra):
         "UNIRATE_TEST_CURRENCY_ENTID": idmap,
         "UNIRATE_TEST_LIVE": "FALSE",
         "UNIRATE_TEST_EXPLAIN": "FALSE",
-        "UNIRATE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _currency_basic_setup(extra):
     if env.get("UNIRATE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("UNIRATE_APIKEY"),
             },
             extra or {},
         ])

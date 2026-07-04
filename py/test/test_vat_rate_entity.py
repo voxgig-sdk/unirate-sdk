@@ -49,8 +49,7 @@ class TestVatRateEntity:
         # LOAD
         vat_rate_ref01_ent = client.VatRate(None)
         vat_rate_ref01_match_dt0 = {}
-        vat_rate_ref01_data_dt0_loaded, err = vat_rate_ref01_ent.load(vat_rate_ref01_match_dt0, None)
-        assert err is None
+        vat_rate_ref01_data_dt0_loaded = vat_rate_ref01_ent.load(vat_rate_ref01_match_dt0, None)
         assert vat_rate_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _vat_rate_basic_setup(extra):
         "UNIRATE_TEST_VAT_RATE_ENTID": idmap,
         "UNIRATE_TEST_LIVE": "FALSE",
         "UNIRATE_TEST_EXPLAIN": "FALSE",
-        "UNIRATE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _vat_rate_basic_setup(extra):
     if env.get("UNIRATE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("UNIRATE_APIKEY"),
             },
             extra or {},
         ])

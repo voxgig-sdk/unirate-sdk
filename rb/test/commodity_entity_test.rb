@@ -42,8 +42,7 @@ class CommodityEntityTest < Minitest::Test
     # LOAD
     commodity_ref01_ent = client.Commodity(nil)
     commodity_ref01_match_dt0 = {}
-    commodity_ref01_data_dt0_loaded, err = commodity_ref01_ent.load(commodity_ref01_match_dt0, nil)
-    assert_nil err
+    commodity_ref01_data_dt0_loaded = commodity_ref01_ent.load(commodity_ref01_match_dt0, nil)
     assert !commodity_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def commodity_basic_setup(extra)
     "UNIRATE_TEST_COMMODITY_ENTID" => idmap,
     "UNIRATE_TEST_LIVE" => "FALSE",
     "UNIRATE_TEST_EXPLAIN" => "FALSE",
-    "UNIRATE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def commodity_basic_setup(extra)
   if env["UNIRATE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["UNIRATE_APIKEY"],
       },
       extra || {},
     ])

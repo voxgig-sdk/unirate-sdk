@@ -144,16 +144,23 @@ class UnirateSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class UnirateSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,30 +212,74 @@ class UnirateSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def commodity(self):
+        """Idiomatic facade: client.commodity.list() / client.commodity.load({"id": ...})."""
+        from entity.commodity_entity import CommodityEntity
+        cached = getattr(self, "_commodity", None)
+        if cached is None:
+            cached = CommodityEntity(self, None)
+            self._commodity = cached
+        return cached
 
     def Commodity(self, data=None):
+        # Deprecated: use client.commodity instead.
         from entity.commodity_entity import CommodityEntity
         return CommodityEntity(self, data)
 
 
+    @property
+    def currency(self):
+        """Idiomatic facade: client.currency.list() / client.currency.load({"id": ...})."""
+        from entity.currency_entity import CurrencyEntity
+        cached = getattr(self, "_currency", None)
+        if cached is None:
+            cached = CurrencyEntity(self, None)
+            self._currency = cached
+        return cached
+
     def Currency(self, data=None):
+        # Deprecated: use client.currency instead.
         from entity.currency_entity import CurrencyEntity
         return CurrencyEntity(self, data)
 
 
+    @property
+    def historical_currency(self):
+        """Idiomatic facade: client.historical_currency.list() / client.historical_currency.load({"id": ...})."""
+        from entity.historical_currency_entity import HistoricalCurrencyEntity
+        cached = getattr(self, "_historical_currency", None)
+        if cached is None:
+            cached = HistoricalCurrencyEntity(self, None)
+            self._historical_currency = cached
+        return cached
+
     def HistoricalCurrency(self, data=None):
+        # Deprecated: use client.historical_currency instead.
         from entity.historical_currency_entity import HistoricalCurrencyEntity
         return HistoricalCurrencyEntity(self, data)
 
 
+    @property
+    def vat_rate(self):
+        """Idiomatic facade: client.vat_rate.list() / client.vat_rate.load({"id": ...})."""
+        from entity.vat_rate_entity import VatRateEntity
+        cached = getattr(self, "_vat_rate", None)
+        if cached is None:
+            cached = VatRateEntity(self, None)
+            self._vat_rate = cached
+        return cached
+
     def VatRate(self, data=None):
+        # Deprecated: use client.vat_rate instead.
         from entity.vat_rate_entity import VatRateEntity
         return VatRateEntity(self, data)
 

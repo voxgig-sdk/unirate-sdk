@@ -49,8 +49,7 @@ class CommodityEntityTest extends TestCase
         // LOAD
         $commodity_ref01_ent = $client->Commodity(null);
         $commodity_ref01_match_dt0 = [];
-        [$commodity_ref01_data_dt0_loaded, $err] = $commodity_ref01_ent->load($commodity_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $commodity_ref01_data_dt0_loaded = $commodity_ref01_ent->load($commodity_ref01_match_dt0, null);
         $this->assertNotNull($commodity_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function commodity_basic_setup($extra)
         "UNIRATE_TEST_COMMODITY_ENTID" => $idmap,
         "UNIRATE_TEST_LIVE" => "FALSE",
         "UNIRATE_TEST_EXPLAIN" => "FALSE",
-        "UNIRATE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function commodity_basic_setup($extra)
     if ($env["UNIRATE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["UNIRATE_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -117,7 +117,6 @@ func vat_rateBasicSetup(extra map[string]any) *entityTestSetup {
 		"UNIRATE_TEST_VAT_RATE_ENTID": idmap,
 		"UNIRATE_TEST_LIVE":      "FALSE",
 		"UNIRATE_TEST_EXPLAIN":   "FALSE",
-		"UNIRATE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["UNIRATE_TEST_VAT_RATE_ENTID"])
@@ -128,7 +127,6 @@ func vat_rateBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["UNIRATE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["UNIRATE_APIKEY"],
 			},
 			extra,
 		})

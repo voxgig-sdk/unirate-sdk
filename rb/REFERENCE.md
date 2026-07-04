@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `Hash` | SDK configuration options. |
-| `options["apikey"]` | `String` | API key for authentication. |
 | `options["base"]` | `String` | Base URL for API requests. |
 | `options["prefix"]` | `String` | URL prefix appended after base. |
 | `options["suffix"]` | `String` | URL suffix appended after path. |
@@ -66,9 +65,11 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs = {}) -> Hash, err`
+#### `direct(fetchargs = {}) -> Hash`
 
-Make a direct HTTP request to any API endpoint.
+Make a direct HTTP request to any API endpoint. Returns a result hash
+(`{ "ok" => ..., "status" => ..., "data" => ..., "err" => ... }`); it
+does not raise — inspect `result["ok"]`.
 
 **Parameters:**
 
@@ -82,14 +83,14 @@ Make a direct HTTP request to any API endpoint.
 | `fetchargs["body"]` | `any` | Request body (hashes are JSON-serialized). |
 | `fetchargs["ctrl"]` | `Hash` | Control options (e.g. `{ "explain" => true }`). |
 
-**Returns:** `Hash, err`
+**Returns:** `Hash`
 
-#### `prepare(fetchargs = {}) -> Hash, err`
+#### `prepare(fetchargs = {}) -> Hash`
 
 Prepare a fetch definition without sending the request. Accepts the
-same parameters as `direct()`.
+same parameters as `direct()`. Raises on error.
 
-**Returns:** `Hash, err`
+**Returns:** `Hash` (the fetch definition; raises on error)
 
 
 ---
@@ -97,17 +98,17 @@ same parameters as `direct()`.
 ## CommodityEntity
 
 ```ruby
-commodity = client.Commodity
+commodity = client.commodity
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Commodity.load({ "id" => "commodity_id" })
+result = client.commodity.load({ "id" => "commodity_id" })
 ```
 
 ### Common Methods
@@ -143,17 +144,17 @@ Return the entity name.
 ## CurrencyEntity
 
 ```ruby
-currency = client.Currency
+currency = client.currency
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.Currency.load({ "id" => "currency_id" })
+result = client.currency.load({ "id" => "currency_id" })
 ```
 
 ### Common Methods
@@ -189,17 +190,17 @@ Return the entity name.
 ## HistoricalCurrencyEntity
 
 ```ruby
-historical_currency = client.HistoricalCurrency
+historical_currency = client.historical_currency
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.HistoricalCurrency.load({ "id" => "historical_currency_id" })
+result = client.historical_currency.load({ "id" => "historical_currency_id" })
 ```
 
 ### Common Methods
@@ -235,17 +236,17 @@ Return the entity name.
 ## VatRateEntity
 
 ```ruby
-vat_rate = client.VatRate
+vat_rate = client.vat_rate
 ```
 
 ### Operations
 
-#### `load(reqmatch, ctrl = nil) -> result, err`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result, err = client.VatRate.load({ "id" => "vat_rate_id" })
+result = client.vat_rate.load({ "id" => "vat_rate_id" })
 ```
 
 ### Common Methods

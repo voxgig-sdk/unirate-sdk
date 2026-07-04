@@ -85,6 +85,27 @@ func (e *HistoricalCurrencyEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an HistoricalCurrency; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *HistoricalCurrencyEntity) DataTyped(data ...HistoricalCurrency) HistoricalCurrency {
+	if len(data) > 0 {
+		return typedFrom[HistoricalCurrency](e.Data(asMap(data[0])))
+	}
+	return typedFrom[HistoricalCurrency](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through HistoricalCurrency (all fields
+// optional at the wire level).
+func (e *HistoricalCurrencyEntity) MatchTyped(match ...HistoricalCurrency) HistoricalCurrency {
+	if len(match) > 0 {
+		return typedFrom[HistoricalCurrency](e.Match(asMap(match[0])))
+	}
+	return typedFrom[HistoricalCurrency](e.Match())
+}
+
 
 func (e *HistoricalCurrencyEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -109,6 +130,17 @@ func (e *HistoricalCurrencyEntity) Load(reqmatch map[string]any, ctrl map[string
 			}
 		}
 	})
+}
+
+// LoadTyped is the statically-typed variant of Load: it takes an
+// HistoricalCurrencyLoadMatch and returns an HistoricalCurrency. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *HistoricalCurrencyEntity) LoadTyped(reqmatch HistoricalCurrencyLoadMatch, ctrl map[string]any) (HistoricalCurrency, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return HistoricalCurrency{}, err
+	}
+	return typedFrom[HistoricalCurrency](res), nil
 }
 
 
