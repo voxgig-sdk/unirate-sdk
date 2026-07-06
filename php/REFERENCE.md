@@ -57,11 +57,11 @@ Create a new `HistoricalCurrencyEntity` instance. Pass `null` for no initial dat
 
 Create a new `VatRateEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): UnirateUtility`
 
 Return a copy of the SDK utility object.
 
@@ -107,24 +107,24 @@ $commodity = $client->Commodity();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Commodity()->load(["id" => "commodity_id"]);
+$result = $client->Commodity()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -133,7 +133,7 @@ Set the entity match criteria.
 Create a new `CommodityEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -153,24 +153,24 @@ $currency = $client->Currency();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Currency()->load(["id" => "currency_id"]);
+$result = $client->Currency()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -179,7 +179,7 @@ Set the entity match criteria.
 Create a new `CurrencyEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -199,24 +199,24 @@ $historical_currency = $client->HistoricalCurrency();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->HistoricalCurrency()->load(["id" => "historical_currency_id"]);
+$result = $client->HistoricalCurrency()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -225,7 +225,7 @@ Set the entity match criteria.
 Create a new `HistoricalCurrencyEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -245,24 +245,24 @@ $vat_rate = $client->VatRate();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->VatRate()->load(["id" => "vat_rate_id"]);
+$result = $client->VatRate()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -271,7 +271,7 @@ Set the entity match criteria.
 Create a new `VatRateEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

@@ -102,7 +102,7 @@ commodity = client.Commodity()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Commodity().load({"id": "commodity_id"})
+result = client.Commodity().load()
 ```
 
 ### Common Methods
@@ -147,7 +147,7 @@ currency = client.Currency()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Currency().load({"id": "currency_id"})
+result = client.Currency().load()
 ```
 
 ### Common Methods
@@ -192,7 +192,7 @@ historical_currency = client.HistoricalCurrency()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.HistoricalCurrency().load({"id": "historical_currency_id"})
+result = client.HistoricalCurrency().load()
 ```
 
 ### Common Methods
@@ -237,7 +237,7 @@ vat_rate = client.VatRate()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.VatRate().load({"id": "vat_rate_id"})
+result = client.VatRate().load()
 ```
 
 ### Common Methods

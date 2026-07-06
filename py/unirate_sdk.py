@@ -221,25 +221,25 @@ class UnirateSDK:
 
 
     def Commodity(self, data=None) -> "CommodityEntity":
-        """Entity factory: client.Commodity().list({}) / client.Commodity().load({"id": ...})."""
+        """Entity factory: client.Commodity().list() / client.Commodity().load({"id": ...})."""
         from entity.commodity_entity import CommodityEntity
         return CommodityEntity(self, data)
 
 
     def Currency(self, data=None) -> "CurrencyEntity":
-        """Entity factory: client.Currency().list({}) / client.Currency().load({"id": ...})."""
+        """Entity factory: client.Currency().list() / client.Currency().load({"id": ...})."""
         from entity.currency_entity import CurrencyEntity
         return CurrencyEntity(self, data)
 
 
     def HistoricalCurrency(self, data=None) -> "HistoricalCurrencyEntity":
-        """Entity factory: client.HistoricalCurrency().list({}) / client.HistoricalCurrency().load({"id": ...})."""
+        """Entity factory: client.HistoricalCurrency().list() / client.HistoricalCurrency().load({"id": ...})."""
         from entity.historical_currency_entity import HistoricalCurrencyEntity
         return HistoricalCurrencyEntity(self, data)
 
 
     def VatRate(self, data=None) -> "VatRateEntity":
-        """Entity factory: client.VatRate().list({}) / client.VatRate().load({"id": ...})."""
+        """Entity factory: client.VatRate().list() / client.VatRate().load({"id": ...})."""
         from entity.vat_rate_entity import VatRateEntity
         return VatRateEntity(self, data)
 

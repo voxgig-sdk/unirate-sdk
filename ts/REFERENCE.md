@@ -155,7 +155,7 @@ const commodity = client.Commodity()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Commodity().load({ id: 'commodity_id' })
+const result = await client.Commodity().load()
 ```
 
 ### Common Methods
@@ -199,7 +199,7 @@ const currency = client.Currency()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Currency().load({ id: 'currency_id' })
+const result = await client.Currency().load()
 ```
 
 ### Common Methods
@@ -243,7 +243,7 @@ const historical_currency = client.HistoricalCurrency()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.HistoricalCurrency().load({ id: 'historical_currency_id' })
+const result = await client.HistoricalCurrency().load()
 ```
 
 ### Common Methods
@@ -287,7 +287,7 @@ const vat_rate = client.VatRate()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.VatRate().load({ id: 'vat_rate_id' })
+const result = await client.VatRate().load()
 ```
 
 ### Common Methods

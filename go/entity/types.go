@@ -12,8 +12,7 @@ import "encoding/json"
 type Commodity struct {
 }
 
-// CommodityLoadMatch mirrors the commodity fields as an all-optional match
-// filter (Go analog of Partial<Commodity>).
+// CommodityLoadMatch is the typed request payload for Commodity.LoadTyped.
 type CommodityLoadMatch struct {
 }
 
@@ -21,8 +20,7 @@ type CommodityLoadMatch struct {
 type Currency struct {
 }
 
-// CurrencyLoadMatch mirrors the currency fields as an all-optional match
-// filter (Go analog of Partial<Currency>).
+// CurrencyLoadMatch is the typed request payload for Currency.LoadTyped.
 type CurrencyLoadMatch struct {
 }
 
@@ -30,8 +28,7 @@ type CurrencyLoadMatch struct {
 type HistoricalCurrency struct {
 }
 
-// HistoricalCurrencyLoadMatch mirrors the historical_currency fields as an all-optional match
-// filter (Go analog of Partial<HistoricalCurrency>).
+// HistoricalCurrencyLoadMatch is the typed request payload for HistoricalCurrency.LoadTyped.
 type HistoricalCurrencyLoadMatch struct {
 }
 
@@ -39,8 +36,7 @@ type HistoricalCurrencyLoadMatch struct {
 type VatRate struct {
 }
 
-// VatRateLoadMatch mirrors the vat_rate fields as an all-optional match
-// filter (Go analog of Partial<VatRate>).
+// VatRateLoadMatch is the typed request payload for VatRate.LoadTyped.
 type VatRateLoadMatch struct {
 }
 

@@ -67,10 +67,12 @@ class CommodityEntity
   
   # Load a single Commodity.
   #
-  # @param reqmatch [CommodityLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [CommodityLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.Commodity.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [Commodity, Hash] the loaded Commodity; raises UnirateError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

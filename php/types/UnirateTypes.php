@@ -17,7 +17,7 @@ class Commodity
 {
 }
 
-/** Match filter for Commodity#load (any subset of Commodity fields). */
+/** Request payload for Commodity#load. */
 class CommodityLoadMatch
 {
 }
@@ -27,7 +27,7 @@ class Currency
 {
 }
 
-/** Match filter for Currency#load (any subset of Currency fields). */
+/** Request payload for Currency#load. */
 class CurrencyLoadMatch
 {
 }
@@ -37,7 +37,7 @@ class HistoricalCurrency
 {
 }
 
-/** Match filter for HistoricalCurrency#load (any subset of HistoricalCurrency fields). */
+/** Request payload for HistoricalCurrency#load. */
 class HistoricalCurrencyLoadMatch
 {
 }
@@ -47,7 +47,7 @@ class VatRate
 {
 }
 
-/** Match filter for VatRate#load (any subset of VatRate fields). */
+/** Request payload for VatRate#load. */
 class VatRateLoadMatch
 {
 }

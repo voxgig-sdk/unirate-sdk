@@ -105,7 +105,7 @@ local commodity = client:Commodity(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Commodity():load({ id = "commodity_id" })
+local result, err = client:Commodity():load()
 ```
 
 ### Common Methods
@@ -151,7 +151,7 @@ local currency = client:Currency(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Currency():load({ id = "currency_id" })
+local result, err = client:Currency():load()
 ```
 
 ### Common Methods
@@ -197,7 +197,7 @@ local historical_currency = client:HistoricalCurrency(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HistoricalCurrency():load({ id = "historical_currency_id" })
+local result, err = client:HistoricalCurrency():load()
 ```
 
 ### Common Methods
@@ -243,7 +243,7 @@ local vat_rate = client:VatRate(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:VatRate():load({ id = "vat_rate_id" })
+local result, err = client:VatRate():load()
 ```
 
 ### Common Methods

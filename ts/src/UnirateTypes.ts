@@ -8,20 +8,24 @@
 export interface Commodity {
 }
 
-export type CommodityLoadMatch = Partial<Commodity>
+export interface CommodityLoadMatch {
+}
 
 export interface Currency {
 }
 
-export type CurrencyLoadMatch = Partial<Currency>
+export interface CurrencyLoadMatch {
+}
 
 export interface HistoricalCurrency {
 }
 
-export type HistoricalCurrencyLoadMatch = Partial<HistoricalCurrency>
+export interface HistoricalCurrencyLoadMatch {
+}
 
 export interface VatRate {
 }
 
-export type VatRateLoadMatch = Partial<VatRate>
+export interface VatRateLoadMatch {
+}
 

@@ -112,7 +112,7 @@ commodity := client.Commodity(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Commodity(nil).Load(map[string]any{"id": "commodity_id"}, nil)
+result, err := client.Commodity(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -152,7 +152,7 @@ currency := client.Currency(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Currency(nil).Load(map[string]any{"id": "currency_id"}, nil)
+result, err := client.Currency(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -192,7 +192,7 @@ historical_currency := client.HistoricalCurrency(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.HistoricalCurrency(nil).Load(map[string]any{"id": "historical_currency_id"}, nil)
+result, err := client.HistoricalCurrency(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -232,7 +232,7 @@ vat_rate := client.VatRate(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.VatRate(nil).Load(map[string]any{"id": "vat_rate_id"}, nil)
+result, err := client.VatRate(nil).Load(nil, nil)
 ```
 
 ### Common Methods

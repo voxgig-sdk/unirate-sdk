@@ -8,7 +8,7 @@ Complete API reference for the Unirate Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'unirate_sdk'
+require_relative 'Unirate_sdk'
 
 client = UnirateSDK.new(options)
 ```
@@ -108,7 +108,7 @@ commodity = client.Commodity
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Commodity.load({ "id" => "commodity_id" })
+result = client.Commodity.load()
 ```
 
 ### Common Methods
@@ -154,7 +154,7 @@ currency = client.Currency
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Currency.load({ "id" => "currency_id" })
+result = client.Currency.load()
 ```
 
 ### Common Methods
@@ -200,7 +200,7 @@ historical_currency = client.HistoricalCurrency
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.HistoricalCurrency.load({ "id" => "historical_currency_id" })
+result = client.HistoricalCurrency.load()
 ```
 
 ### Common Methods
@@ -246,7 +246,7 @@ vat_rate = client.VatRate
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.VatRate.load({ "id" => "vat_rate_id" })
+result = client.VatRate.load()
 ```
 
 ### Common Methods
