@@ -103,6 +103,7 @@ same parameters as `Direct()`.
 
 ```go
 commodity := client.Commodity(nil)
+fmt.Println(commodity.GetName()) // "commodity"
 ```
 
 ### Operations
@@ -113,6 +114,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Commodity(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -143,6 +148,7 @@ Return the entity name.
 
 ```go
 currency := client.Currency(nil)
+fmt.Println(currency.GetName()) // "currency"
 ```
 
 ### Operations
@@ -153,6 +159,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Currency(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -182,7 +192,8 @@ Return the entity name.
 ## HistoricalCurrencyEntity
 
 ```go
-historical_currency := client.HistoricalCurrency(nil)
+historicalCurrency := client.HistoricalCurrency(nil)
+fmt.Println(historicalCurrency.GetName()) // "historical_currency"
 ```
 
 ### Operations
@@ -193,6 +204,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.HistoricalCurrency(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -222,7 +237,8 @@ Return the entity name.
 ## VatRateEntity
 
 ```go
-vat_rate := client.VatRate(nil)
+vatRate := client.VatRate(nil)
+fmt.Println(vatRate.GetName()) // "vat_rate"
 ```
 
 ### Operations
@@ -233,6 +249,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.VatRate(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

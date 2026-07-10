@@ -342,7 +342,7 @@ fmt.Println(currency) // the loaded record
 
 ### HistoricalCurrency
 
-Create an instance: `historical_currency := client.HistoricalCurrency(nil)`
+Create an instance: `historicalCurrency := client.HistoricalCurrency(nil)`
 
 #### Operations
 
@@ -353,17 +353,17 @@ Create an instance: `historical_currency := client.HistoricalCurrency(nil)`
 #### Example: Load
 
 ```go
-historical_currency, err := client.HistoricalCurrency(nil).Load(nil, nil)
+historicalCurrency, err := client.HistoricalCurrency(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(historical_currency) // the loaded record
+fmt.Println(historicalCurrency) // the loaded record
 ```
 
 
 ### VatRate
 
-Create an instance: `vat_rate := client.VatRate(nil)`
+Create an instance: `vatRate := client.VatRate(nil)`
 
 #### Operations
 
@@ -374,11 +374,11 @@ Create an instance: `vat_rate := client.VatRate(nil)`
 #### Example: Load
 
 ```go
-vat_rate, err := client.VatRate(nil).Load(nil, nil)
+vatRate, err := client.VatRate(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(vat_rate) // the loaded record
+fmt.Println(vatRate) // the loaded record
 ```
 
 

@@ -11,9 +11,9 @@ main: {
           url: "https://api.unirateapi.com"
         }
       ]
+      summary: "API for currency conversion and exchange rates with historical data"
       title: "UniRate API"
       version: "1.0"
+      website: "https://unirateapi.com"
     }
   }
-}
-

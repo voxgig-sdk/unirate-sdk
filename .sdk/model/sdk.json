@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -1069,13 +1066,16 @@
       "info": {
         "auth": false,
         "description": "API for currency conversion and exchange rates with historical data",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "url": "https://api.unirateapi.com"
           }
         ],
+        "summary": "API for currency conversion and exchange rates with historical data",
         "title": "UniRate API",
-        "version": "1.0"
+        "version": "1.0",
+        "website": "https://unirateapi.com"
       },
       "option": {},
       "target": {
@@ -1128,6 +1128,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -1178,6 +1181,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
