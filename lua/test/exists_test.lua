@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Unirate SDK exists test
 
 local sdk = require("unirate_sdk")
 
