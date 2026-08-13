@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 const client = UnirateSDK.test()
 
 const commodity = await client.Commodity().load()
-// commodity is a bare entity populated with mock response data
+// commodity is the entity, populated with mock response data
+// — call commodity.data() for the record itself
 console.log(commodity)
 ```
 

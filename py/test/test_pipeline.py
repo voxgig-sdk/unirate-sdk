@@ -16,11 +16,11 @@
 import pytest
 
 from unirate_sdk import UnirateSDK
-from core.error import UnirateError
-from core.result import UnirateResult
-from core.response import UnirateResponse
-from core.spec import UnirateSpec
-from feature.base_feature import UnirateBaseFeature
+from unirate_sdk.core.error import UnirateError
+from unirate_sdk.core.result import UnirateResult
+from unirate_sdk.core.response import UnirateResponse
+from unirate_sdk.core.spec import UnirateSpec
+from unirate_sdk.feature.base_feature import UnirateBaseFeature
 
 
 def _client():

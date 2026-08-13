@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import UnirateControl
-from core.error import UnirateError
-from core.result import UnirateResult
-from core.spec import UnirateSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import UnirateControl
+from projectname_sdk.core.error import UnirateError
+from projectname_sdk.core.result import UnirateResult
+from projectname_sdk.core.spec import UnirateSpec
 
 
 # True when this SDK was generated with the named feature.

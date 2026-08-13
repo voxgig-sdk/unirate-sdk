@@ -62,7 +62,7 @@ describe('VatRateEntity', async () => {
     // LOAD
     const vat_rate_ref01_ent = client.VatRate()
     const vat_rate_ref01_match_dt0: any = {}
-    const vat_rate_ref01_data_dt0 = await vat_rate_ref01_ent.load(vat_rate_ref01_match_dt0)
+    const vat_rate_ref01_data_dt0 = (await vat_rate_ref01_ent.load(vat_rate_ref01_match_dt0)).data()
     assert(null != vat_rate_ref01_data_dt0)
 
 

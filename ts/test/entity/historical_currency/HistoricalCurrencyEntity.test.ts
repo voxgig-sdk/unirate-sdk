@@ -62,7 +62,7 @@ describe('HistoricalCurrencyEntity', async () => {
     // LOAD
     const historical_currency_ref01_ent = client.HistoricalCurrency()
     const historical_currency_ref01_match_dt0: any = {}
-    const historical_currency_ref01_data_dt0 = await historical_currency_ref01_ent.load(historical_currency_ref01_match_dt0)
+    const historical_currency_ref01_data_dt0 = (await historical_currency_ref01_ent.load(historical_currency_ref01_match_dt0)).data()
     assert(null != historical_currency_ref01_data_dt0)
 
 

@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = UnirateSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = UnirateSDK.test({
+  entity: {
+    commodity: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const commodity = await client.Commodity().load()
-// commodity is a bare Commodity populated with mock data
+// commodity is the Commodity entity, populated with mock data
+// — call commodity.data() for the record itself
 console.log(commodity)
 ```
 
@@ -185,7 +194,7 @@ require_once 'unirate_sdk.php';
 $client = new UnirateSDK();
 
 
-// Load a specific commodity (returns the bare record; throws on error)
+// Load a specific commodity (returns the ENTITY; call data_get() for the record; throws on error)
 $commodity = $client->Commodity()->load();
 print_r($commodity);
 ```
@@ -213,7 +222,7 @@ require_relative "Unirate_sdk"
 client = UnirateSDK.new
 
 
-# Load a specific commodity (returns the bare record; raises on error)
+# Load a specific commodity (returns the ENTITY; call data_get for the record)
 commodity = client.Commodity.load()
 puts commodity
 ```
@@ -347,6 +356,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api.unirateapi.com](https://api.unirateapi.com)
 

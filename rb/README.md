@@ -34,7 +34,7 @@ client = UnirateSDK.new
 
 ```ruby
 begin
-  # load returns the bare Commodity record (raises on error).
+  # load returns the ENTITY — call data_get for the Commodity record (raises on error).
   commodity = client.Commodity.load()
   puts commodity
 rescue => err
@@ -117,7 +117,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = UnirateSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 commodity = client.Commodity.load()
 puts commodity
 ```
@@ -287,7 +288,7 @@ Create an instance: `commodity = client.Commodity`
 #### Example: Load
 
 ```ruby
-# load returns the bare Commodity record (raises on error).
+# load returns the ENTITY — call data_get for the Commodity record (raises on error).
 commodity = client.Commodity.load()
 ```
 
@@ -305,7 +306,7 @@ Create an instance: `currency = client.Currency`
 #### Example: Load
 
 ```ruby
-# load returns the bare Currency record (raises on error).
+# load returns the ENTITY — call data_get for the Currency record (raises on error).
 currency = client.Currency.load()
 ```
 
@@ -323,7 +324,7 @@ Create an instance: `historical_currency = client.HistoricalCurrency`
 #### Example: Load
 
 ```ruby
-# load returns the bare HistoricalCurrency record (raises on error).
+# load returns the ENTITY — call data_get for the HistoricalCurrency record (raises on error).
 historical_currency = client.HistoricalCurrency.load()
 ```
 
@@ -341,7 +342,7 @@ Create an instance: `vat_rate = client.VatRate`
 #### Example: Load
 
 ```ruby
-# load returns the bare VatRate record (raises on error).
+# load returns the ENTITY — call data_get for the VatRate record (raises on error).
 vat_rate = client.VatRate.load()
 ```
 

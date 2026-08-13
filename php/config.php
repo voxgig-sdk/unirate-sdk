@@ -93,6 +93,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/historical/rates',
                   'parts' => [
@@ -171,6 +172,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/historical/timeseries',
                   'parts' => [
@@ -241,6 +243,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/convert',
                   'parts' => [
@@ -310,6 +313,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/rates',
                   'parts' => [
@@ -355,6 +359,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/symbols',
                   'parts' => [
@@ -437,6 +442,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/convert',
                   'parts' => [
@@ -504,6 +510,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/rates',
                   'parts' => [
@@ -547,6 +554,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/currencies',
                   'parts' => [
@@ -643,6 +651,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/historical/timeseries',
                   'parts' => [
@@ -721,6 +730,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/historical/rates',
                   'parts' => [
@@ -766,6 +776,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/historical/limits',
                   'parts' => [
@@ -831,6 +842,7 @@ class UnirateConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/vat/rates',
                   'parts' => [

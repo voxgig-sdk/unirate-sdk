@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from unirate_sdk.utility.voxgig_struct import voxgig_struct as vs
 from unirate_sdk import UnirateSDK
-from core import helpers
+from unirate_sdk.core import helpers
 from test import runner
 
 

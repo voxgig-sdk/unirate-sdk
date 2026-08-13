@@ -87,6 +87,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/commodities/historical/rates",
                 ["parts"] = {
@@ -165,6 +166,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/commodities/historical/timeseries",
                 ["parts"] = {
@@ -235,6 +237,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/commodities/convert",
                 ["parts"] = {
@@ -304,6 +307,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/commodities/rates",
                 ["parts"] = {
@@ -349,6 +353,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/commodities/symbols",
                 ["parts"] = {
@@ -431,6 +436,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/convert",
                 ["parts"] = {
@@ -498,6 +504,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/rates",
                 ["parts"] = {
@@ -541,6 +548,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/currencies",
                 ["parts"] = {
@@ -637,6 +645,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/historical/timeseries",
                 ["parts"] = {
@@ -715,6 +724,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/historical/rates",
                 ["parts"] = {
@@ -760,6 +770,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/historical/limits",
                 ["parts"] = {
@@ -825,6 +836,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/api/vat/rates",
                 ["parts"] = {

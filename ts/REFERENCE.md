@@ -148,6 +148,28 @@ Alias for `UnirateSDK.test()`.
 const commodity = client.Commodity()
 ```
 
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `convert` | `/api/commodities/convert` | `client.Commodity().load({ $action: 'convert', ... })` |
+| `rate` | `/api/commodities/rates` | `client.Commodity().load({ $action: 'rate', ... })` |
+| `symbol` | `/api/commodities/symbols` | `client.Commodity().load({ $action: 'symbol', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Commodity record — check the API definition for its shape.
+
+```ts
+const result = await client.Commodity().load({
+  $action: 'convert',
+  /* ...the action's own arguments */
+})
+```
+
 ### Operations
 
 #### `load(match: object, ctrl?: object)`

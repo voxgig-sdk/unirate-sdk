@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Unirate SDK exists test
 
 import pytest
 from unirate_sdk import UnirateSDK

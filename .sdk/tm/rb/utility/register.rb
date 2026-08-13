@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ UnirateUtility.registrar = ->(u) {
   u.prepare_params = UnirateUtilities::PrepareParams
   u.prepare_path = UnirateUtilities::PreparePath
   u.prepare_query = UnirateUtilities::PrepareQuery
+  u.graphql_body = UnirateUtilities::GraphqlBody
+  u.graphql_errors = UnirateUtilities::GraphqlErrors
   u.result_basic = UnirateUtilities::ResultBasic
   u.result_body = UnirateUtilities::ResultBody
   u.result_headers = UnirateUtilities::ResultHeaders

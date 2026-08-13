@@ -9,6 +9,12 @@ export interface Commodity {
 }
 
 export interface CommodityLoadMatch {
+
+  // Selects a custom action instead of the plain load:
+  //   'convert' | 'rate' | 'symbol'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Currency {
