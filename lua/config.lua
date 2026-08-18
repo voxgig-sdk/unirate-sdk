@@ -1,5 +1,8 @@
 -- Unirate SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -34,19 +37,15 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "amount",
                       ["orig"] = "amount",
-                      ["reqd"] = false,
                       ["type"] = "`$NUMBER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -54,7 +53,6 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "date",
                       ["orig"] = "date",
@@ -62,27 +60,21 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "from",
                       ["orig"] = "from",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "to",
                       ["orig"] = "to",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -110,22 +102,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "amount",
                       ["orig"] = "amount",
-                      ["reqd"] = false,
                       ["type"] = "`$NUMBER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -133,7 +120,6 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "end_date",
                       ["orig"] = "end_date",
@@ -141,15 +127,12 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "start_date",
                       ["orig"] = "start_date",
@@ -157,11 +140,9 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "symbol",
                       ["orig"] = "symbol",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -189,22 +170,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 1,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "amount",
                       ["orig"] = "amount",
-                      ["reqd"] = false,
                       ["type"] = "`$NUMBER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -212,27 +188,21 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "from",
                       ["orig"] = "from",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "to",
                       ["orig"] = "to",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -259,22 +229,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 2,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "amount",
                       ["orig"] = "amount",
-                      ["reqd"] = false,
                       ["type"] = "`$NUMBER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -282,27 +247,21 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "from",
                       ["orig"] = "from",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "to",
                       ["orig"] = "to",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -329,14 +288,11 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 3,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -344,11 +300,9 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -372,10 +326,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 4,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -391,19 +343,15 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "amount",
                       ["orig"] = "amount",
-                      ["reqd"] = false,
                       ["type"] = "`$NUMBER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -411,23 +359,18 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "from",
                       ["orig"] = "from",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "to",
                       ["orig"] = "to",
@@ -456,22 +399,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "amount",
                       ["orig"] = "amount",
-                      ["reqd"] = false,
                       ["type"] = "`$NUMBER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -479,27 +417,21 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "from",
                       ["orig"] = "from",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "to",
                       ["orig"] = "to",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -524,14 +456,11 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 1,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -539,11 +468,9 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -565,10 +492,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 2,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -584,19 +509,15 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "amount",
                       ["orig"] = "amount",
-                      ["reqd"] = false,
                       ["type"] = "`$NUMBER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -604,23 +525,18 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "base",
                       ["orig"] = "base",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "currency",
                       ["orig"] = "currency",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "end_date",
                       ["orig"] = "end_date",
@@ -628,15 +544,12 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "start_date",
                       ["orig"] = "start_date",
@@ -668,22 +581,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "amount",
                       ["orig"] = "amount",
-                      ["reqd"] = false,
                       ["type"] = "`$NUMBER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -691,7 +599,6 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "date",
                       ["orig"] = "date",
@@ -699,27 +606,21 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "from",
                       ["orig"] = "from",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "to",
                       ["orig"] = "to",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -746,14 +647,11 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 1,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -761,11 +659,9 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -788,10 +684,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 2,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -807,11 +701,9 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "api_key",
                       ["orig"] = "api_key",
@@ -819,19 +711,15 @@ local function make_config()
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "country",
                       ["orig"] = "country",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "format",
                       ["orig"] = "format",
-                      ["reqd"] = false,
                       ["type"] = "`$ANY`",
                     },
                   },
@@ -855,10 +743,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {

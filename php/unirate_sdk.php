@@ -40,7 +40,7 @@ class UnirateSDK
         $utility = new UnirateUtility();
         $this->_utility = $utility;
 
-        $config = UnirateConfig::make_config();
+        $config = UnirateConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

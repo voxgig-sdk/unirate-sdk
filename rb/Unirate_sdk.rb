@@ -28,7 +28,7 @@ class UnirateSDK
     utility = UnirateUtility.new
     @_utility = utility
 
-    config = UnirateConfig.make_config
+    config = UnirateConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

@@ -1,6 +1,20 @@
 # Unirate SDK configuration
 
 module UnirateConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -35,19 +49,15 @@ module UnirateConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "amount",
                         "orig" => "amount",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -55,7 +65,6 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "date",
                         "orig" => "date",
@@ -63,27 +72,21 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "from",
                         "orig" => "from",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "to",
                         "orig" => "to",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -111,22 +114,17 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "amount",
                         "orig" => "amount",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -134,7 +132,6 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "end_date",
                         "orig" => "end_date",
@@ -142,15 +139,12 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "start_date",
                         "orig" => "start_date",
@@ -158,11 +152,9 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "symbol",
                         "orig" => "symbol",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -190,22 +182,17 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "amount",
                         "orig" => "amount",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -213,27 +200,21 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "from",
                         "orig" => "from",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "to",
                         "orig" => "to",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -260,22 +241,17 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 2,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "amount",
                         "orig" => "amount",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -283,27 +259,21 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "from",
                         "orig" => "from",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "to",
                         "orig" => "to",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -330,14 +300,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 3,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -345,11 +312,9 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -373,10 +338,8 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 4,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -392,19 +355,15 @@ module UnirateConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "amount",
                         "orig" => "amount",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -412,23 +371,18 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "from",
                         "orig" => "from",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "to",
                         "orig" => "to",
@@ -457,22 +411,17 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "amount",
                         "orig" => "amount",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -480,27 +429,21 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "from",
                         "orig" => "from",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "to",
                         "orig" => "to",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -525,14 +468,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -540,11 +480,9 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -566,10 +504,8 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 2,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -585,19 +521,15 @@ module UnirateConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "amount",
                         "orig" => "amount",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -605,23 +537,18 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "base",
                         "orig" => "base",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "currency",
                         "orig" => "currency",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "end_date",
                         "orig" => "end_date",
@@ -629,15 +556,12 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "start_date",
                         "orig" => "start_date",
@@ -669,22 +593,17 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "amount",
                         "orig" => "amount",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -692,7 +611,6 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "date",
                         "orig" => "date",
@@ -700,27 +618,21 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "from",
                         "orig" => "from",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "to",
                         "orig" => "to",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -747,14 +659,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -762,11 +671,9 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -789,10 +696,8 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 2,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -808,11 +713,9 @@ module UnirateConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "api_key",
                         "orig" => "api_key",
@@ -820,19 +723,15 @@ module UnirateConfig
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "country",
                         "orig" => "country",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "format",
                         "orig" => "format",
-                        "reqd" => false,
                         "type" => "`$ANY`",
                       },
                     ],
@@ -856,10 +755,8 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

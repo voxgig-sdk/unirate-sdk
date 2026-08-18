@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class UnirateConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -40,19 +63,15 @@ class UnirateConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'amount',
                         'orig' => 'amount',
-                        'reqd' => false,
                         'type' => '`$NUMBER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -60,7 +79,6 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'date',
                         'orig' => 'date',
@@ -68,27 +86,21 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'from',
                         'orig' => 'from',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'to',
                         'orig' => 'to',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -116,22 +128,17 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'amount',
                         'orig' => 'amount',
-                        'reqd' => false,
                         'type' => '`$NUMBER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -139,7 +146,6 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'end_date',
                         'orig' => 'end_date',
@@ -147,15 +153,12 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'start_date',
                         'orig' => 'start_date',
@@ -163,11 +166,9 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'symbol',
                         'orig' => 'symbol',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -195,22 +196,17 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'amount',
                         'orig' => 'amount',
-                        'reqd' => false,
                         'type' => '`$NUMBER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -218,27 +214,21 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'from',
                         'orig' => 'from',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'to',
                         'orig' => 'to',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -265,22 +255,17 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'amount',
                         'orig' => 'amount',
-                        'reqd' => false,
                         'type' => '`$NUMBER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -288,27 +273,21 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'from',
                         'orig' => 'from',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'to',
                         'orig' => 'to',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -335,14 +314,11 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 3,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -350,11 +326,9 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -378,10 +352,8 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 4,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -397,19 +369,15 @@ class UnirateConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'amount',
                         'orig' => 'amount',
-                        'reqd' => false,
                         'type' => '`$NUMBER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -417,23 +385,18 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'from',
                         'orig' => 'from',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'to',
                         'orig' => 'to',
@@ -462,22 +425,17 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'amount',
                         'orig' => 'amount',
-                        'reqd' => false,
                         'type' => '`$NUMBER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -485,27 +443,21 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'from',
                         'orig' => 'from',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'to',
                         'orig' => 'to',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -530,14 +482,11 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -545,11 +494,9 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -571,10 +518,8 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -590,19 +535,15 @@ class UnirateConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'amount',
                         'orig' => 'amount',
-                        'reqd' => false,
                         'type' => '`$NUMBER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -610,23 +551,18 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'base',
                         'orig' => 'base',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'currency',
                         'orig' => 'currency',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'end_date',
                         'orig' => 'end_date',
@@ -634,15 +570,12 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'start_date',
                         'orig' => 'start_date',
@@ -674,22 +607,17 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'amount',
                         'orig' => 'amount',
-                        'reqd' => false,
                         'type' => '`$NUMBER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -697,7 +625,6 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'date',
                         'orig' => 'date',
@@ -705,27 +632,21 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'from',
                         'orig' => 'from',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'to',
                         'orig' => 'to',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -752,14 +673,11 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -767,11 +685,9 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -794,10 +710,8 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 2,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -813,11 +727,9 @@ class UnirateConfig
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'api_key',
                         'orig' => 'api_key',
@@ -825,19 +737,15 @@ class UnirateConfig
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'country',
                         'orig' => 'country',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'format',
                         'orig' => 'format',
-                        'reqd' => false,
                         'type' => '`$ANY`',
                       ],
                     ],
@@ -861,10 +769,8 @@ class UnirateConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [

@@ -23,8 +23,8 @@ class UnirateSDK:
         utility = UnirateUtility()
         self._utility = utility
 
-        from unirate_sdk.config import make_config
-        config = make_config()
+        from unirate_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
