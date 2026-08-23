@@ -1,6 +1,0 @@
-# Flows
-
-@"BasicCommodityFlow.aontu"
-@"BasicCurrencyFlow.aontu"
-@"BasicHistoricalCurrencyFlow.aontu"
-@"BasicVatRateFlow.aontu"

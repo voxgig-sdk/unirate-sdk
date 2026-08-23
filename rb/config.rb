@@ -19,6 +19,9 @@ module UnirateConfig
     {
       "main" => {
         "name" => "Unirate",
+        "slug" => "unirate",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {

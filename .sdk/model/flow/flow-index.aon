@@ -1,0 +1,6 @@
+# Flows
+
+@"BasicCommodityFlow.aon"
+@"BasicCurrencyFlow.aon"
+@"BasicHistoricalCurrencyFlow.aon"
+@"BasicVatRateFlow.aon"
