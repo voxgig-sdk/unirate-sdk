@@ -35,7 +35,7 @@ client = UnirateSDK.new
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the Commodity record (raises on error).
-  commodity = client.Commodity.load()
+  commodity = client.Commodity.load({ "api_key" => "example_api_key" })
   puts commodity
 rescue => err
   warn "load failed: #{err}"
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  commodity = client.Commodity.load()
+  commodity = client.Commodity.load({ "api_key" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -119,7 +119,7 @@ client = UnirateSDK.test
 
 # Entity ops return the ENTITY (raises on error);
 # call data_get for the mock record.
-commodity = client.Commodity.load()
+commodity = client.Commodity.load({ "api_key" => "example" })
 puts commodity
 ```
 
@@ -289,7 +289,7 @@ Create an instance: `commodity = client.Commodity`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Commodity record (raises on error).
-commodity = client.Commodity.load()
+commodity = client.Commodity.load({ "api_key" => "api_key" })
 ```
 
 
@@ -307,7 +307,7 @@ Create an instance: `currency = client.Currency`
 
 ```ruby
 # load returns the ENTITY — call data_get for the Currency record (raises on error).
-currency = client.Currency.load()
+currency = client.Currency.load({ "api_key" => "api_key" })
 ```
 
 
@@ -325,7 +325,7 @@ Create an instance: `historical_currency = client.HistoricalCurrency`
 
 ```ruby
 # load returns the ENTITY — call data_get for the HistoricalCurrency record (raises on error).
-historical_currency = client.HistoricalCurrency.load()
+historical_currency = client.HistoricalCurrency.load({ "api_key" => "api_key" })
 ```
 
 
@@ -343,8 +343,31 @@ Create an instance: `vat_rate = client.VatRate`
 
 ```ruby
 # load returns the ENTITY — call data_get for the VatRate record (raises on error).
-vat_rate = client.VatRate.load()
+vat_rate = client.VatRate.load({ "api_key" => "api_key" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -424,7 +447,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 commodity = client.Commodity
-commodity.load()
+commodity.load({ "api_key" => "example" })
 
 # commodity.data_get now returns the commodity data from the last load
 # commodity.match_get returns the last match criteria

@@ -20,29 +20,61 @@ class Commodity(TypedDict):
     pass
 
 
-class CommodityLoadMatch(TypedDict):
-    pass
+class CommodityLoadMatchRequired(TypedDict):
+    api_key: Any
+
+
+class CommodityLoadMatch(CommodityLoadMatchRequired, total=False):
+    amount: float
+    date: Any
+    format: Any
+    to: Any
+    end_date: Any
+    start_date: Any
+    symbol: Any
 
 
 class Currency(TypedDict):
     pass
 
 
-class CurrencyLoadMatch(TypedDict):
-    pass
+class CurrencyLoadMatchRequired(TypedDict):
+    api_key: Any
+
+
+class CurrencyLoadMatch(CurrencyLoadMatchRequired, total=False):
+    amount: float
+    format: Any
+    to: Any
 
 
 class HistoricalCurrency(TypedDict):
     pass
 
 
-class HistoricalCurrencyLoadMatch(TypedDict):
-    pass
+class HistoricalCurrencyLoadMatchRequired(TypedDict):
+    api_key: Any
+
+
+class HistoricalCurrencyLoadMatch(HistoricalCurrencyLoadMatchRequired, total=False):
+    amount: float
+    base: Any
+    currency: Any
+    end_date: Any
+    format: Any
+    start_date: Any
+    date: Any
+    to: Any
 
 
 class VatRate(TypedDict):
     pass
 
 
-class VatRateLoadMatch(TypedDict):
-    pass
+class VatRateLoadMatchRequired(TypedDict):
+    api_key: Any
+
+
+class VatRateLoadMatch(VatRateLoadMatchRequired, total=False):
+    country: Any
+    format: Any

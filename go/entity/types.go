@@ -18,6 +18,15 @@ type Commodity struct {
 
 // CommodityLoadMatch is the typed request payload for Commodity.LoadTyped.
 type CommodityLoadMatch struct {
+	Amount *float64 `json:"amount,omitempty"`
+	ApiKey any `json:"api_key"`
+	Date *any `json:"date,omitempty"`
+	Format *any `json:"format,omitempty"`
+	From *any `json:"from,omitempty"`
+	To *any `json:"to,omitempty"`
+	EndDate *any `json:"end_date,omitempty"`
+	StartDate *any `json:"start_date,omitempty"`
+	Symbol *any `json:"symbol,omitempty"`
 }
 
 // Currency is the typed data model for the currency entity.
@@ -26,6 +35,11 @@ type Currency struct {
 
 // CurrencyLoadMatch is the typed request payload for Currency.LoadTyped.
 type CurrencyLoadMatch struct {
+	Amount *float64 `json:"amount,omitempty"`
+	ApiKey any `json:"api_key"`
+	Format *any `json:"format,omitempty"`
+	From *any `json:"from,omitempty"`
+	To *any `json:"to,omitempty"`
 }
 
 // HistoricalCurrency is the typed data model for the historical_currency entity.
@@ -34,6 +48,16 @@ type HistoricalCurrency struct {
 
 // HistoricalCurrencyLoadMatch is the typed request payload for HistoricalCurrency.LoadTyped.
 type HistoricalCurrencyLoadMatch struct {
+	Amount *float64 `json:"amount,omitempty"`
+	ApiKey any `json:"api_key"`
+	Base *any `json:"base,omitempty"`
+	Currency *any `json:"currency,omitempty"`
+	EndDate *any `json:"end_date,omitempty"`
+	Format *any `json:"format,omitempty"`
+	StartDate *any `json:"start_date,omitempty"`
+	Date *any `json:"date,omitempty"`
+	From *any `json:"from,omitempty"`
+	To *any `json:"to,omitempty"`
 }
 
 // VatRate is the typed data model for the vat_rate entity.
@@ -42,6 +66,9 @@ type VatRate struct {
 
 // VatRateLoadMatch is the typed request payload for VatRate.LoadTyped.
 type VatRateLoadMatch struct {
+	ApiKey any `json:"api_key"`
+	Country *any `json:"country,omitempty"`
+	Format *any `json:"format,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

@@ -36,7 +36,7 @@ $client = new UnirateSDK();
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the Commodity record (throws on error).
-    $commodity = $client->Commodity()->load();
+    $commodity = $client->Commodity()->load(["api_key" => "example_api_key"]);
     print_r($commodity);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $commodity = $client->Commodity()->load();
+    $commodity = $client->Commodity()->load(["api_key" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,7 +125,7 @@ $client = UnirateSDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$commodity = $client->Commodity()->load();
+$commodity = $client->Commodity()->load(["api_key" => "example"]);
 print_r($commodity);
 ```
 
@@ -299,7 +299,7 @@ Create an instance: `$commodity = $client->Commodity();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Commodity record (throws on error).
-$commodity = $client->Commodity()->load();
+$commodity = $client->Commodity()->load(["api_key" => "api_key"]);
 ```
 
 
@@ -317,7 +317,7 @@ Create an instance: `$currency = $client->Currency();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Currency record (throws on error).
-$currency = $client->Currency()->load();
+$currency = $client->Currency()->load(["api_key" => "api_key"]);
 ```
 
 
@@ -335,7 +335,7 @@ Create an instance: `$historical_currency = $client->HistoricalCurrency();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the HistoricalCurrency record (throws on error).
-$historical_currency = $client->HistoricalCurrency()->load();
+$historical_currency = $client->HistoricalCurrency()->load(["api_key" => "api_key"]);
 ```
 
 
@@ -353,8 +353,31 @@ Create an instance: `$vat_rate = $client->VatRate();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the VatRate record (throws on error).
-$vat_rate = $client->VatRate()->load();
+$vat_rate = $client->VatRate()->load(["api_key" => "api_key"]);
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -434,7 +457,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $commodity = $client->Commodity();
-$commodity->load();
+$commodity->load(["api_key" => "example"]);
 
 // $commodity->data_get() now returns the commodity data from the last load
 // $commodity->match_get() returns the last match criteria

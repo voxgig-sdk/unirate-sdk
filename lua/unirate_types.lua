@@ -9,18 +9,45 @@
 ---@class Commodity
 
 ---@class CommodityLoadMatch
+---@field amount? number
+---@field api_key any
+---@field date? any
+---@field format? any
+---@field from? any
+---@field to? any
+---@field end_date? any
+---@field start_date? any
+---@field symbol? any
 
 ---@class Currency
 
 ---@class CurrencyLoadMatch
+---@field amount? number
+---@field api_key any
+---@field format? any
+---@field from? any
+---@field to? any
 
 ---@class HistoricalCurrency
 
 ---@class HistoricalCurrencyLoadMatch
+---@field amount? number
+---@field api_key any
+---@field base? any
+---@field currency? any
+---@field end_date? any
+---@field format? any
+---@field start_date? any
+---@field date? any
+---@field from? any
+---@field to? any
 
 ---@class VatRate
 
 ---@class VatRateLoadMatch
+---@field api_key any
+---@field country? any
+---@field format? any
 
 local M = {}
 

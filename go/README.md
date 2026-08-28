@@ -51,7 +51,7 @@ func main() {
     client := sdk.New()
 
     // Load a single commodity — the value is the loaded record.
-    commodity, err := client.Commodity(nil).Load(nil, nil)
+    commodity, err := client.Commodity(nil).Load(map[string]any{"api_key": "example_api_key"}, nil)
     if err != nil {
         panic(err)
     }
@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-commodity, err := client.Commodity(nil).Load(nil, nil)
+commodity, err := client.Commodity(nil).Load(map[string]any{"api_key": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 commodity, err := client.Commodity(nil).Load(
-    nil, nil,
+    map[string]any{"api_key": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -311,7 +311,7 @@ Create an instance: `commodity := client.Commodity(nil)`
 #### Example: Load
 
 ```go
-commodity, err := client.Commodity(nil).Load(nil, nil)
+commodity, err := client.Commodity(nil).Load(map[string]any{"api_key": "api_key"}, nil)
 if err != nil {
     panic(err)
 }
@@ -332,7 +332,7 @@ Create an instance: `currency := client.Currency(nil)`
 #### Example: Load
 
 ```go
-currency, err := client.Currency(nil).Load(nil, nil)
+currency, err := client.Currency(nil).Load(map[string]any{"api_key": "api_key"}, nil)
 if err != nil {
     panic(err)
 }
@@ -353,7 +353,7 @@ Create an instance: `historicalCurrency := client.HistoricalCurrency(nil)`
 #### Example: Load
 
 ```go
-historicalCurrency, err := client.HistoricalCurrency(nil).Load(nil, nil)
+historicalCurrency, err := client.HistoricalCurrency(nil).Load(map[string]any{"api_key": "api_key"}, nil)
 if err != nil {
     panic(err)
 }
@@ -374,12 +374,35 @@ Create an instance: `vatRate := client.VatRate(nil)`
 #### Example: Load
 
 ```go
-vatRate, err := client.VatRate(nil).Load(nil, nil)
+vatRate, err := client.VatRate(nil).Load(map[string]any{"api_key": "api_key"}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(vatRate) // the loaded record
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -456,7 +479,7 @@ stores the returned data and match criteria internally.
 
 ```go
 commodity := client.Commodity(nil)
-commodity.Load(nil, nil)
+commodity.Load(map[string]any{"api_key": "example"}, nil)
 
 // commodity.Data() now returns the commodity data from the last load
 // commodity.Match() returns the last match criteria

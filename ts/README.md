@@ -39,7 +39,7 @@ const client = new UnirateSDK()
 
 ```ts
 try {
-  const commodity = await client.Commodity().load()
+  const commodity = await client.Commodity().load({ api_key: 'example_api_key' })
   console.log(commodity)
 } catch (err) {
   console.error('load failed:', err)
@@ -53,7 +53,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const commodity = await client.Commodity().load()
+  const commodity = await client.Commodity().load({ api_key: "example" })
   console.log(commodity)
 } catch (err) {
   console.error('load failed:', err)
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = UnirateSDK.test()
 
-const commodity = await client.Commodity().load()
+const commodity = await client.Commodity().load({ api_key: 'example_api_key' })
 // commodity is the entity, populated with mock response data
 // — call commodity.data() for the record itself
 console.log(commodity)
@@ -141,7 +141,7 @@ Entity instances remember their last match and data:
 const entity = client.Commodity()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ api_key: 'example_api_key' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -338,7 +338,7 @@ Create an instance: `const commodity = client.Commodity()`
 #### Example: Load
 
 ```ts
-const commodity = await client.Commodity().load()
+const commodity = await client.Commodity().load({ api_key: 'api_key' })
 ```
 
 
@@ -355,7 +355,7 @@ Create an instance: `const currency = client.Currency()`
 #### Example: Load
 
 ```ts
-const currency = await client.Currency().load()
+const currency = await client.Currency().load({ api_key: 'api_key' })
 ```
 
 
@@ -372,7 +372,7 @@ Create an instance: `const historical_currency = client.HistoricalCurrency()`
 #### Example: Load
 
 ```ts
-const historical_currency = await client.HistoricalCurrency().load()
+const historical_currency = await client.HistoricalCurrency().load({ api_key: 'api_key' })
 ```
 
 
@@ -389,8 +389,31 @@ Create an instance: `const vat_rate = client.VatRate()`
 #### Example: Load
 
 ```ts
-const vat_rate = await client.VatRate().load()
+const vat_rate = await client.VatRate().load({ api_key: 'api_key' })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -463,7 +486,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const commodity = client.Commodity()
-await commodity.load()
+await commodity.load({ api_key: "example" })
 
 // commodity.data() now returns the commodity data from the last `load`
 // commodity.match() returns the last match criteria

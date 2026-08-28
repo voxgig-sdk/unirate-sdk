@@ -20,6 +20,15 @@ class Commodity
 /** Request payload for Commodity#load. */
 class CommodityLoadMatch
 {
+    public ?float $amount = null;
+    public mixed $api_key;
+    public mixed $date = null;
+    public mixed $format = null;
+    public mixed $from = null;
+    public mixed $to = null;
+    public mixed $end_date = null;
+    public mixed $start_date = null;
+    public mixed $symbol = null;
 }
 
 /** Currency entity data model. */
@@ -30,6 +39,11 @@ class Currency
 /** Request payload for Currency#load. */
 class CurrencyLoadMatch
 {
+    public ?float $amount = null;
+    public mixed $api_key;
+    public mixed $format = null;
+    public mixed $from = null;
+    public mixed $to = null;
 }
 
 /** HistoricalCurrency entity data model. */
@@ -40,6 +54,16 @@ class HistoricalCurrency
 /** Request payload for HistoricalCurrency#load. */
 class HistoricalCurrencyLoadMatch
 {
+    public ?float $amount = null;
+    public mixed $api_key;
+    public mixed $base = null;
+    public mixed $currency = null;
+    public mixed $end_date = null;
+    public mixed $format = null;
+    public mixed $start_date = null;
+    public mixed $date = null;
+    public mixed $from = null;
+    public mixed $to = null;
 }
 
 /** VatRate entity data model. */
@@ -50,5 +74,8 @@ class VatRate
 /** Request payload for VatRate#load. */
 class VatRateLoadMatch
 {
+    public mixed $api_key;
+    public mixed $country = null;
+    public mixed $format = null;
 }
 
