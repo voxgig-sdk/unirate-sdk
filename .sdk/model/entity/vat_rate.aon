@@ -37,10 +37,16 @@ main: kit: entity: vat_rate: {
           }
           method: "GET"
           orig: "/api/vat/rates"
-          parts: [
-            "api"
-            "vat"
-            "rates"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "vat"
+            }
+            {
+              lit: "rates"
+            }
           ]
           select: {
             exist: [

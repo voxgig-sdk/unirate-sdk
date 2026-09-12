@@ -112,11 +112,19 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/historical/rates',
-                  'parts' => [
-                    'api',
-                    'commodities',
-                    'historical',
-                    'rates',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'commodities',
+                    ],
+                    [
+                      'lit' => 'historical',
+                    ],
+                    [
+                      'lit' => 'rates',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -131,6 +139,12 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'commodities',
+                    'historical',
+                    'rates',
                   ],
                 ],
                 [
@@ -180,11 +194,19 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/historical/timeseries',
-                  'parts' => [
-                    'api',
-                    'commodities',
-                    'historical',
-                    'timeseries',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'commodities',
+                    ],
+                    [
+                      'lit' => 'historical',
+                    ],
+                    [
+                      'lit' => 'timeseries',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -199,6 +221,12 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'commodities',
+                    'historical',
+                    'timeseries',
                   ],
                 ],
                 [
@@ -240,10 +268,16 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/convert',
-                  'parts' => [
-                    'api',
-                    'commodities',
-                    'convert',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'commodities',
+                    ],
+                    [
+                      'lit' => 'convert',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'convert',
@@ -258,6 +292,11 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'commodities',
+                    'convert',
                   ],
                 ],
                 [
@@ -299,10 +338,16 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/rates',
-                  'parts' => [
-                    'api',
-                    'commodities',
-                    'rates',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'commodities',
+                    ],
+                    [
+                      'lit' => 'rates',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'rate',
@@ -317,6 +362,11 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'commodities',
+                    'rates',
                   ],
                 ],
                 [
@@ -340,10 +390,16 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/commodities/symbols',
-                  'parts' => [
-                    'api',
-                    'commodities',
-                    'symbols',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'commodities',
+                    ],
+                    [
+                      'lit' => 'symbols',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'symbol',
@@ -355,6 +411,11 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'commodities',
+                    'symbols',
                   ],
                 ],
               ],
@@ -412,9 +473,13 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/convert',
-                  'parts' => [
-                    'api',
-                    'convert',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'convert',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -428,6 +493,10 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'convert',
                   ],
                 ],
                 [
@@ -469,9 +538,13 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/rates',
-                  'parts' => [
-                    'api',
-                    'rates',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'rates',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -485,6 +558,10 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'rates',
                   ],
                 ],
                 [
@@ -508,9 +585,13 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/currencies',
-                  'parts' => [
-                    'api',
-                    'currencies',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'currencies',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -521,6 +602,10 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'currencies',
                   ],
                 ],
               ],
@@ -591,10 +676,16 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/historical/timeseries',
-                  'parts' => [
-                    'api',
-                    'historical',
-                    'timeseries',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'historical',
+                    ],
+                    [
+                      'lit' => 'timeseries',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -610,6 +701,11 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'historical',
+                    'timeseries',
                   ],
                 ],
                 [
@@ -658,10 +754,16 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/historical/rates',
-                  'parts' => [
-                    'api',
-                    'historical',
-                    'rates',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'historical',
+                    ],
+                    [
+                      'lit' => 'rates',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -676,6 +778,11 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'historical',
+                    'rates',
                   ],
                 ],
                 [
@@ -699,10 +806,16 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/historical/limits',
-                  'parts' => [
-                    'api',
-                    'historical',
-                    'limits',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'historical',
+                    ],
+                    [
+                      'lit' => 'limits',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -713,6 +826,11 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'historical',
+                    'limits',
                   ],
                 ],
               ],
@@ -757,10 +875,16 @@ class UnirateConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/api/vat/rates',
-                  'parts' => [
-                    'api',
-                    'vat',
-                    'rates',
+                  'segments' => [
+                    [
+                      'lit' => 'api',
+                    ],
+                    [
+                      'lit' => 'vat',
+                    ],
+                    [
+                      'lit' => 'rates',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -772,6 +896,11 @@ class UnirateConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'api',
+                    'vat',
+                    'rates',
                   ],
                 ],
               ],

@@ -65,10 +65,16 @@ main: kit: entity: historical_currency: {
           }
           method: "GET"
           orig: "/api/historical/timeseries"
-          parts: [
-            "api"
-            "historical"
-            "timeseries"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "historical"
+            }
+            {
+              lit: "timeseries"
+            }
           ]
           select: {
             exist: [
@@ -135,10 +141,16 @@ main: kit: entity: historical_currency: {
           }
           method: "GET"
           orig: "/api/historical/rates"
-          parts: [
-            "api"
-            "historical"
-            "rates"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "historical"
+            }
+            {
+              lit: "rates"
+            }
           ]
           select: {
             exist: [
@@ -176,10 +188,16 @@ main: kit: entity: historical_currency: {
           }
           method: "GET"
           orig: "/api/historical/limits"
-          parts: [
-            "api"
-            "historical"
-            "limits"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "historical"
+            }
+            {
+              lit: "limits"
+            }
           ]
           select: {
             exist: [

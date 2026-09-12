@@ -98,11 +98,19 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/commodities/historical/rates",
-                  "parts" => [
-                    "api",
-                    "commodities",
-                    "historical",
-                    "rates",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "commodities",
+                    },
+                    {
+                      "lit" => "historical",
+                    },
+                    {
+                      "lit" => "rates",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -118,6 +126,12 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "commodities",
+                    "historical",
+                    "rates",
+                  ],
                 },
                 {
                   "args" => {
@@ -166,11 +180,19 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/commodities/historical/timeseries",
-                  "parts" => [
-                    "api",
-                    "commodities",
-                    "historical",
-                    "timeseries",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "commodities",
+                    },
+                    {
+                      "lit" => "historical",
+                    },
+                    {
+                      "lit" => "timeseries",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -186,6 +208,12 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "commodities",
+                    "historical",
+                    "timeseries",
+                  ],
                 },
                 {
                   "args" => {
@@ -226,10 +254,16 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/commodities/convert",
-                  "parts" => [
-                    "api",
-                    "commodities",
-                    "convert",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "commodities",
+                    },
+                    {
+                      "lit" => "convert",
+                    },
                   ],
                   "select" => {
                     "$action" => "convert",
@@ -245,6 +279,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "commodities",
+                    "convert",
+                  ],
                 },
                 {
                   "args" => {
@@ -285,10 +324,16 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/commodities/rates",
-                  "parts" => [
-                    "api",
-                    "commodities",
-                    "rates",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "commodities",
+                    },
+                    {
+                      "lit" => "rates",
+                    },
                   ],
                   "select" => {
                     "$action" => "rate",
@@ -304,6 +349,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "commodities",
+                    "rates",
+                  ],
                 },
                 {
                   "args" => {
@@ -326,10 +376,16 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/commodities/symbols",
-                  "parts" => [
-                    "api",
-                    "commodities",
-                    "symbols",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "commodities",
+                    },
+                    {
+                      "lit" => "symbols",
+                    },
                   ],
                   "select" => {
                     "$action" => "symbol",
@@ -342,6 +398,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "commodities",
+                    "symbols",
+                  ],
                 },
               ],
             },
@@ -398,9 +459,13 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/convert",
-                  "parts" => [
-                    "api",
-                    "convert",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "convert",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -415,6 +480,10 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "convert",
+                  ],
                 },
                 {
                   "args" => {
@@ -455,9 +524,13 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/rates",
-                  "parts" => [
-                    "api",
-                    "rates",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "rates",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -472,6 +545,10 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "rates",
+                  ],
                 },
                 {
                   "args" => {
@@ -494,9 +571,13 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/currencies",
-                  "parts" => [
-                    "api",
-                    "currencies",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "currencies",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -508,6 +589,10 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "currencies",
+                  ],
                 },
               ],
             },
@@ -577,10 +662,16 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/historical/timeseries",
-                  "parts" => [
-                    "api",
-                    "historical",
-                    "timeseries",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "historical",
+                    },
+                    {
+                      "lit" => "timeseries",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -597,6 +688,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "historical",
+                    "timeseries",
+                  ],
                 },
                 {
                   "args" => {
@@ -644,10 +740,16 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/historical/rates",
-                  "parts" => [
-                    "api",
-                    "historical",
-                    "rates",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "historical",
+                    },
+                    {
+                      "lit" => "rates",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -663,6 +765,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "historical",
+                    "rates",
+                  ],
                 },
                 {
                   "args" => {
@@ -685,10 +792,16 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/historical/limits",
-                  "parts" => [
-                    "api",
-                    "historical",
-                    "limits",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "historical",
+                    },
+                    {
+                      "lit" => "limits",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -700,6 +813,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "historical",
+                    "limits",
+                  ],
                 },
               ],
             },
@@ -743,10 +861,16 @@ module UnirateConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/api/vat/rates",
-                  "parts" => [
-                    "api",
-                    "vat",
-                    "rates",
+                  "segments" => [
+                    {
+                      "lit" => "api",
+                    },
+                    {
+                      "lit" => "vat",
+                    },
+                    {
+                      "lit" => "rates",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -759,6 +883,11 @@ module UnirateConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "api",
+                    "vat",
+                    "rates",
+                  ],
                 },
               ],
             },

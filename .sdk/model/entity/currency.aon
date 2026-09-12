@@ -51,9 +51,13 @@ main: kit: entity: currency: {
           }
           method: "GET"
           orig: "/api/convert"
-          parts: [
-            "api"
-            "convert"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "convert"
+            }
           ]
           select: {
             exist: [
@@ -111,9 +115,13 @@ main: kit: entity: currency: {
           }
           method: "GET"
           orig: "/api/rates"
-          parts: [
-            "api"
-            "rates"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "rates"
+            }
           ]
           select: {
             exist: [
@@ -150,9 +158,13 @@ main: kit: entity: currency: {
           }
           method: "GET"
           orig: "/api/currencies"
-          parts: [
-            "api"
-            "currencies"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "currencies"
+            }
           ]
           select: {
             exist: [

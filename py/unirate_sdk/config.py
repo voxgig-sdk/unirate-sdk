@@ -1,6 +1,14 @@
 # Unirate SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -107,11 +115,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/commodities/historical/rates",
-                "parts": [
-                  "api",
-                  "commodities",
-                  "historical",
-                  "rates",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "commodities",
+                  },
+                  {
+                    "lit": "historical",
+                  },
+                  {
+                    "lit": "rates",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -127,6 +143,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "commodities",
+                  "historical",
+                  "rates",
+                ],
               },
               {
                 "args": {
@@ -175,11 +197,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/commodities/historical/timeseries",
-                "parts": [
-                  "api",
-                  "commodities",
-                  "historical",
-                  "timeseries",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "commodities",
+                  },
+                  {
+                    "lit": "historical",
+                  },
+                  {
+                    "lit": "timeseries",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -195,6 +225,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "commodities",
+                  "historical",
+                  "timeseries",
+                ],
               },
               {
                 "args": {
@@ -235,10 +271,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/commodities/convert",
-                "parts": [
-                  "api",
-                  "commodities",
-                  "convert",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "commodities",
+                  },
+                  {
+                    "lit": "convert",
+                  },
                 ],
                 "select": {
                   "$action": "convert",
@@ -254,6 +296,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "commodities",
+                  "convert",
+                ],
               },
               {
                 "args": {
@@ -294,10 +341,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/commodities/rates",
-                "parts": [
-                  "api",
-                  "commodities",
-                  "rates",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "commodities",
+                  },
+                  {
+                    "lit": "rates",
+                  },
                 ],
                 "select": {
                   "$action": "rate",
@@ -313,6 +366,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "commodities",
+                  "rates",
+                ],
               },
               {
                 "args": {
@@ -335,10 +393,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/commodities/symbols",
-                "parts": [
-                  "api",
-                  "commodities",
-                  "symbols",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "commodities",
+                  },
+                  {
+                    "lit": "symbols",
+                  },
                 ],
                 "select": {
                   "$action": "symbol",
@@ -351,6 +415,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "commodities",
+                  "symbols",
+                ],
               },
             ],
           },
@@ -407,9 +476,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/convert",
-                "parts": [
-                  "api",
-                  "convert",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "convert",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -424,6 +497,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "convert",
+                ],
               },
               {
                 "args": {
@@ -464,9 +541,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/rates",
-                "parts": [
-                  "api",
-                  "rates",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "rates",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -481,6 +562,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "rates",
+                ],
               },
               {
                 "args": {
@@ -503,9 +588,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/currencies",
-                "parts": [
-                  "api",
-                  "currencies",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "currencies",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -517,6 +606,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "currencies",
+                ],
               },
             ],
           },
@@ -586,10 +679,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/historical/timeseries",
-                "parts": [
-                  "api",
-                  "historical",
-                  "timeseries",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "historical",
+                  },
+                  {
+                    "lit": "timeseries",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -606,6 +705,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "historical",
+                  "timeseries",
+                ],
               },
               {
                 "args": {
@@ -653,10 +757,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/historical/rates",
-                "parts": [
-                  "api",
-                  "historical",
-                  "rates",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "historical",
+                  },
+                  {
+                    "lit": "rates",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -672,6 +782,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "historical",
+                  "rates",
+                ],
               },
               {
                 "args": {
@@ -694,10 +809,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/historical/limits",
-                "parts": [
-                  "api",
-                  "historical",
-                  "limits",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "historical",
+                  },
+                  {
+                    "lit": "limits",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -709,6 +830,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "historical",
+                  "limits",
+                ],
               },
             ],
           },
@@ -752,10 +878,16 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/api/vat/rates",
-                "parts": [
-                  "api",
-                  "vat",
-                  "rates",
+                "segments": [
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "vat",
+                  },
+                  {
+                    "lit": "rates",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -768,6 +900,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "api",
+                  "vat",
+                  "rates",
+                ],
               },
             ],
           },

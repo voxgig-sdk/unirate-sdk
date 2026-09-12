@@ -58,11 +58,19 @@ main: kit: entity: commodity: {
           }
           method: "GET"
           orig: "/api/commodities/historical/rates"
-          parts: [
-            "api"
-            "commodities"
-            "historical"
-            "rates"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "commodities"
+            }
+            {
+              lit: "historical"
+            }
+            {
+              lit: "rates"
+            }
           ]
           select: {
             exist: [
@@ -128,11 +136,19 @@ main: kit: entity: commodity: {
           }
           method: "GET"
           orig: "/api/commodities/historical/timeseries"
-          parts: [
-            "api"
-            "commodities"
-            "historical"
-            "timeseries"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "commodities"
+            }
+            {
+              lit: "historical"
+            }
+            {
+              lit: "timeseries"
+            }
           ]
           select: {
             exist: [
@@ -191,10 +207,16 @@ main: kit: entity: commodity: {
           }
           method: "GET"
           orig: "/api/commodities/convert"
-          parts: [
-            "api"
-            "commodities"
-            "convert"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "commodities"
+            }
+            {
+              lit: "convert"
+            }
           ]
           select: {
             "$action": "convert"
@@ -253,10 +275,16 @@ main: kit: entity: commodity: {
           }
           method: "GET"
           orig: "/api/commodities/rates"
-          parts: [
-            "api"
-            "commodities"
-            "rates"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "commodities"
+            }
+            {
+              lit: "rates"
+            }
           ]
           select: {
             "$action": "rate"
@@ -294,10 +322,16 @@ main: kit: entity: commodity: {
           }
           method: "GET"
           orig: "/api/commodities/symbols"
-          parts: [
-            "api"
-            "commodities"
-            "symbols"
+          segments: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "commodities"
+            }
+            {
+              lit: "symbols"
+            }
           ]
           select: {
             "$action": "symbol"

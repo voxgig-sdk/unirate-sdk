@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -127,11 +138,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/commodities/historical/rates",
-              "parts": [
-                "api",
-                "commodities",
-                "historical",
-                "rates"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "commodities"
+                },
+                {
+                  "lit": "historical"
+                },
+                {
+                  "lit": "rates"
+                }
               ],
               "select": {
                 "exist": [
@@ -146,7 +165,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "commodities",
+                "historical",
+                "rates"
+              ]
             },
             {
               "args": {
@@ -195,11 +220,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/commodities/historical/timeseries",
-              "parts": [
-                "api",
-                "commodities",
-                "historical",
-                "timeseries"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "commodities"
+                },
+                {
+                  "lit": "historical"
+                },
+                {
+                  "lit": "timeseries"
+                }
               ],
               "select": {
                 "exist": [
@@ -214,7 +247,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "commodities",
+                "historical",
+                "timeseries"
+              ]
             },
             {
               "args": {
@@ -255,10 +294,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/commodities/convert",
-              "parts": [
-                "api",
-                "commodities",
-                "convert"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "commodities"
+                },
+                {
+                  "lit": "convert"
+                }
               ],
               "select": {
                 "$action": "convert",
@@ -273,7 +318,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "commodities",
+                "convert"
+              ]
             },
             {
               "args": {
@@ -314,10 +364,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/commodities/rates",
-              "parts": [
-                "api",
-                "commodities",
-                "rates"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "commodities"
+                },
+                {
+                  "lit": "rates"
+                }
               ],
               "select": {
                 "$action": "rate",
@@ -332,7 +388,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "commodities",
+                "rates"
+              ]
             },
             {
               "args": {
@@ -355,10 +416,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/commodities/symbols",
-              "parts": [
-                "api",
-                "commodities",
-                "symbols"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "commodities"
+                },
+                {
+                  "lit": "symbols"
+                }
               ],
               "select": {
                 "$action": "symbol",
@@ -370,7 +437,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "commodities",
+                "symbols"
+              ]
             }
           ]
         }
@@ -427,9 +499,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/convert",
-              "parts": [
-                "api",
-                "convert"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "convert"
+                }
               ],
               "select": {
                 "exist": [
@@ -443,7 +519,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "convert"
+              ]
             },
             {
               "args": {
@@ -484,9 +564,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/rates",
-              "parts": [
-                "api",
-                "rates"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "rates"
+                }
               ],
               "select": {
                 "exist": [
@@ -500,7 +584,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "rates"
+              ]
             },
             {
               "args": {
@@ -523,9 +611,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/currencies",
-              "parts": [
-                "api",
-                "currencies"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "currencies"
+                }
               ],
               "select": {
                 "exist": [
@@ -536,7 +628,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "currencies"
+              ]
             }
           ]
         }
@@ -606,10 +702,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/historical/timeseries",
-              "parts": [
-                "api",
-                "historical",
-                "timeseries"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "historical"
+                },
+                {
+                  "lit": "timeseries"
+                }
               ],
               "select": {
                 "exist": [
@@ -625,7 +727,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "historical",
+                "timeseries"
+              ]
             },
             {
               "args": {
@@ -673,10 +780,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/historical/rates",
-              "parts": [
-                "api",
-                "historical",
-                "rates"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "historical"
+                },
+                {
+                  "lit": "rates"
+                }
               ],
               "select": {
                 "exist": [
@@ -691,7 +804,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "historical",
+                "rates"
+              ]
             },
             {
               "args": {
@@ -714,10 +832,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/historical/limits",
-              "parts": [
-                "api",
-                "historical",
-                "limits"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "historical"
+                },
+                {
+                  "lit": "limits"
+                }
               ],
               "select": {
                 "exist": [
@@ -728,7 +852,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "historical",
+                "limits"
+              ]
             }
           ]
         }
@@ -772,10 +901,16 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/api/vat/rates",
-              "parts": [
-                "api",
-                "vat",
-                "rates"
+              "segments": [
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "vat"
+                },
+                {
+                  "lit": "rates"
+                }
               ],
               "select": {
                 "exist": [
@@ -787,7 +922,12 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "api",
+                "vat",
+                "rates"
+              ]
             }
           ]
         }
@@ -803,6 +943,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

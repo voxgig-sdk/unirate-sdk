@@ -95,11 +95,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/commodities/historical/rates",
-                  "parts": [
-                    "api",
-                    "commodities",
-                    "historical",
-                    "rates"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "commodities"
+                    },
+                    {
+                      "lit": "historical"
+                    },
+                    {
+                      "lit": "rates"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -173,11 +181,19 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/commodities/historical/timeseries",
-                  "parts": [
-                    "api",
-                    "commodities",
-                    "historical",
-                    "timeseries"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "commodities"
+                    },
+                    {
+                      "lit": "historical"
+                    },
+                    {
+                      "lit": "timeseries"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -243,10 +259,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/commodities/convert",
-                  "parts": [
-                    "api",
-                    "commodities",
-                    "convert"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "commodities"
+                    },
+                    {
+                      "lit": "convert"
+                    }
                   ],
                   "select": {
                     "$action": "convert",
@@ -312,10 +334,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/commodities/rates",
-                  "parts": [
-                    "api",
-                    "commodities",
-                    "rates"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "commodities"
+                    },
+                    {
+                      "lit": "rates"
+                    }
                   ],
                   "select": {
                     "$action": "rate",
@@ -357,10 +385,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/commodities/symbols",
-                  "parts": [
-                    "api",
-                    "commodities",
-                    "symbols"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "commodities"
+                    },
+                    {
+                      "lit": "symbols"
+                    }
                   ],
                   "select": {
                     "$action": "symbol",
@@ -442,9 +476,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/convert",
-                  "parts": [
-                    "api",
-                    "convert"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "convert"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -509,9 +547,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/rates",
-                  "parts": [
-                    "api",
-                    "rates"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "rates"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -552,9 +594,13 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/currencies",
-                  "parts": [
-                    "api",
-                    "currencies"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "currencies"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -651,10 +697,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/historical/timeseries",
-                  "parts": [
-                    "api",
-                    "historical",
-                    "timeseries"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "historical"
+                    },
+                    {
+                      "lit": "timeseries"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -729,10 +781,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/historical/rates",
-                  "parts": [
-                    "api",
-                    "historical",
-                    "rates"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "historical"
+                    },
+                    {
+                      "lit": "rates"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -774,10 +832,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/historical/limits",
-                  "parts": [
-                    "api",
-                    "historical",
-                    "limits"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "historical"
+                    },
+                    {
+                      "lit": "limits"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -842,10 +906,16 @@
                   "kind": "http",
                   "method": "GET",
                   "orig": "/api/vat/rates",
-                  "parts": [
-                    "api",
-                    "vat",
-                    "rates"
+                  "segments": [
+                    {
+                      "lit": "api"
+                    },
+                    {
+                      "lit": "vat"
+                    },
+                    {
+                      "lit": "rates"
+                    }
                   ],
                   "select": {
                     "exist": [
@@ -931,8 +1001,11 @@
             }
           },
           "name": "test",
+          "needs": {},
           "origname": "",
           "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
           "target": {
             "go": {
               "deps": {}
@@ -1140,6 +1213,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1165,6 +1241,10 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/runner_test.go",
+            "test/struct_runner_test.go"
+          ],
           "title": "Golang"
         },
         "go-cli": {
@@ -1216,6 +1296,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1240,6 +1321,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go CLI"
         },
         "go-mcp": {
@@ -1291,6 +1373,7 @@
               "active": false
             }
           },
+          "provides": {},
           "publish": {
             "registry": {
               "active": false,
@@ -1315,6 +1398,7 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [],
           "title": "Go MCP server"
         },
         "lua": {
@@ -1355,6 +1439,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1380,6 +1467,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.lua"
+          ],
           "title": "Lua"
         },
         "php": {
@@ -1414,6 +1504,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1439,6 +1532,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/StructRunner.php"
+          ],
           "title": "PHP"
         },
         "py": {
@@ -1479,6 +1575,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1504,6 +1603,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.py"
+          ],
           "title": "Python"
         },
         "rb": {
@@ -1549,6 +1651,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1574,6 +1679,9 @@
             "version": "0.0.1"
           },
           "srcfeature": false,
+          "superseded": [
+            "test/struct_runner.rb"
+          ],
           "title": "Ruby"
         },
         "ts": {
@@ -1591,11 +1699,6 @@
               "active": true,
               "kind": "dev",
               "version": "^25.6.0"
-            },
-            "dotenv": {
-              "active": true,
-              "kind": "dev",
-              "version": "^17.4.2"
             },
             "typescript": {
               "active": true,
@@ -1624,6 +1727,9 @@
             "sdkrel": ""
           },
           "package": "@voxgig/sdkgen",
+          "provides": {
+            "sekreto": true
+          },
           "publish": {
             "registry": {
               "active": false,
@@ -1648,6 +1754,14 @@
             },
             "version": "0.0.1"
           },
+          "superseded": [
+            "test/runner.ts",
+            "test/vendor/omni/compat.ts",
+            "src/feature/secrets/sekreto/Providers.ts",
+            "src/feature/secrets/sekreto/Sigv4.ts",
+            "src/feature/secrets/sekreto/provider/Registry.ts",
+            "src/feature/secrets/sekreto/provider/http.ts"
+          ],
           "title": "TypeScript"
         }
       },
