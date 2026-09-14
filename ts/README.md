@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { UnirateSDK } from '@voxgig-sdk/unirate'
+import { UnirateSDK } from '@voxgig-sdk/unirate-sdk'
 
 const client = new UnirateSDK()
 ```
@@ -475,7 +475,7 @@ unirate/
 Import the SDK from the package root:
 
 ```ts
-import { UnirateSDK } from '@voxgig-sdk/unirate'
+import { UnirateSDK } from '@voxgig-sdk/unirate-sdk'
 ```
 
 ### Entity state

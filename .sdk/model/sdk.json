@@ -1734,7 +1734,7 @@
             "registry": {
               "active": false,
               "name": "npm",
-              "package": "",
+              "package": "@voxgig-sdk/unirate-sdk",
               "state": "pending",
               "url": "https://registry.npmjs.org",
               "vault": {

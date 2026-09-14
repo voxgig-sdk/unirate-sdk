@@ -105,7 +105,7 @@ local result, err = client:Commodity():load({ api_key = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/releases) |
+| TypeScript | `@voxgig-sdk/unirate-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/releases) |
 | Python | `voxgig-sdk-unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/releases) |
 | PHP | `voxgig-sdk/unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/unirate-sdk/go` | `go get github.com/voxgig-sdk/unirate-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Commodity():load({ api_key = "example" })
 ### TypeScript
 
 ```ts
-import { UnirateSDK } from '@voxgig-sdk/unirate'
+import { UnirateSDK } from '@voxgig-sdk/unirate-sdk'
 
 const client = new UnirateSDK()
 
