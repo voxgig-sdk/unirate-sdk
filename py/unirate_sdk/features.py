@@ -1,12 +1,18 @@
 # Unirate SDK feature factory
 
 from unirate_sdk.feature.base_feature import UnirateBaseFeature
+from unirate_sdk.feature.ratelimit_feature import UnirateRatelimitFeature
+from unirate_sdk.feature.retry_feature import UnirateRetryFeature
 from unirate_sdk.feature.test_feature import UnirateTestFeature
+from unirate_sdk.feature.timeout_feature import UnirateTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: UnirateBaseFeature(),
+    "ratelimit": lambda: UnirateRatelimitFeature(),
+    "retry": lambda: UnirateRetryFeature(),
     "test": lambda: UnirateTestFeature(),
+    "timeout": lambda: UnirateTimeoutFeature(),
 }
 
 

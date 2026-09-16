@@ -35,6 +35,12 @@ main: kit: entity: vat_rate: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/vat/rates"
+            json: "{\"consumes\":[\"application/json\"],\"operationId\":\"getVatRates\",\"parameters\":[{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"description\":\"Two-letter country code (e.g., DE, FR)\",\"in\":\"query\",\"name\":\"country\",\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"VAT rates retrieved successfully\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"404\":{\"description\":\"No VAT rates found for specified country\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/api/vat/rates"
           segments: [

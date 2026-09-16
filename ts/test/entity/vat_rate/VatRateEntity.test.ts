@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { UnirateSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('VatRateEntity', async () => {
 
     const live = 'TRUE' === process.env.UNIRATE_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'vat_rate.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'vat_rate.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set UNIRATE_TEST_VAT_RATE_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"vat_rate","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"api_key","orig":"api_key","reqd":true,"type":"`$ANY`","index$":0},{"active":true,"kind":"query","name":"country","orig":"country","reqd":false,"type":"`$ANY`","index$":1},{"active":true,"kind":"query","name":"format","orig":"format","reqd":false,"type":"`$ANY`","index$":2}]},"contract":{"id":"GET /api/vat/rates","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"getVatRates\",\"parameters\":[{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"description\":\"Two-letter country code (e.g., DE, FR)\",\"in\":\"query\",\"name\":\"country\",\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"VAT rates retrieved successfully\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"404\":{\"description\":\"No VAT rates found for specified country\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/vat/rates","segments":[{"lit":"api"},{"lit":"vat"},{"lit":"rates"}],"select":{"exist":["api_key","country","format"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"vat_rate","name__orig":"vat_rate","Name":"VatRate","name_":"vat_rate","name-":"vat-rate","NAME":"VAT_RATE","index$":3}, {"active":true,"entity":"vat_rate","key$":"BasicVatRateFlow","kind":"basic","name":"BasicVatRateFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"vat_rate_ref01","srcdatavar":"vat_rate_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-vat_rate_ref01"}}],"index$":0}]}, 'VatRate')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['UNIRATE_TEST_VAT_RATE_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'UNIRATE_TEST_VAT_RATE_ENTID': idmap,
     'UNIRATE_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.UNIRATE_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['UNIRATE_TEST_VAT_RATE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new UnirateSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.UNIRATE_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

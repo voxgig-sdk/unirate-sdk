@@ -49,6 +49,12 @@ main: kit: entity: currency: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/convert"
+            json: "{\"consumes\":[\"application/json\"],\"operationId\":\"convertCurrency\",\"parameters\":[{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"default\":1,\"description\":\"Amount to convert\",\"in\":\"query\",\"name\":\"amount\",\"type\":\"number\"},{\"default\":\"USD\",\"description\":\"Source currency code\",\"in\":\"query\",\"name\":\"from\",\"type\":\"string\"},{\"description\":\"Target currency code\",\"in\":\"query\",\"name\":\"to\",\"required\":true,\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Currency converted successfully\"},\"400\":{\"description\":\"Invalid request parameters\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"404\":{\"description\":\"Currency not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/api/convert"
           segments: [
@@ -113,6 +119,12 @@ main: kit: entity: currency: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/rates"
+            json: "{\"consumes\":[\"application/json\"],\"operationId\":\"getRates\",\"parameters\":[{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"default\":1,\"description\":\"Amount to convert\",\"in\":\"query\",\"name\":\"amount\",\"type\":\"number\"},{\"default\":\"USD\",\"description\":\"Base currency code\",\"in\":\"query\",\"name\":\"from\",\"type\":\"string\"},{\"description\":\"Target currency code\",\"in\":\"query\",\"name\":\"to\",\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Exchange rates retrieved successfully\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"404\":{\"description\":\"Currency not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/api/rates"
           segments: [
@@ -155,6 +167,12 @@ main: kit: entity: currency: {
                 type: "`$ANY`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/currencies"
+            json: "{\"consumes\":[\"application/json\"],\"operationId\":\"listCurrencies\",\"parameters\":[{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"A list of available currencies\"},\"401\":{\"description\":\"Missing or invalid API key\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
           }
           method: "GET"
           orig: "/api/currencies"

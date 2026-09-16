@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { UnirateSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('HistoricalCurrencyEntity', async () => {
 
     const live = 'TRUE' === process.env.UNIRATE_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'historical_currency.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'historical_currency.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[],"name":"historical_currency","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"amount","orig":"amount","reqd":false,"type":"`$NUMBER`","index$":0},{"active":true,"kind":"query","name":"api_key","orig":"api_key","reqd":true,"type":"`$ANY`","index$":1},{"active":true,"kind":"query","name":"base","orig":"base","reqd":false,"type":"`$ANY`","index$":2},{"active":true,"kind":"query","name":"currency","orig":"currency","reqd":false,"type":"`$ANY`","index$":3},{"active":true,"kind":"query","name":"end_date","orig":"end_date","reqd":true,"type":"`$ANY`","index$":4},{"active":true,"kind":"query","name":"format","orig":"format","reqd":false,"type":"`$ANY`","index$":5},{"active":true,"kind":"query","name":"start_date","orig":"start_date","reqd":true,"type":"`$ANY`","index$":6}]},"contract":{"id":"GET /api/historical/timeseries","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"getTimeSeries\",\"parameters\":[{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"description\":\"Start date in YYYY-MM-DD format\",\"in\":\"query\",\"name\":\"start_date\",\"required\":true,\"type\":\"string\"},{\"description\":\"End date in YYYY-MM-DD format\",\"in\":\"query\",\"name\":\"end_date\",\"required\":true,\"type\":\"string\"},{\"default\":1,\"description\":\"Amount to convert\",\"in\":\"query\",\"name\":\"amount\",\"type\":\"number\"},{\"description\":\"Base currency code (defaults to USD)\",\"in\":\"query\",\"name\":\"base\",\"type\":\"string\"},{\"description\":\"Comma-separated list of currency codes\",\"in\":\"query\",\"name\":\"currencies\",\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Time series data retrieved successfully\"},\"400\":{\"description\":\"Invalid parameters or date range exceeds 5 years\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"429\":{\"description\":\"Rate limit exceeded\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/historical/timeseries","segments":[{"lit":"api"},{"lit":"historical"},{"lit":"timeseries"}],"select":{"exist":["amount","api_key","base","currency","end_date","format","start_date"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0},{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"amount","orig":"amount","reqd":false,"type":"`$NUMBER`","index$":0},{"active":true,"kind":"query","name":"api_key","orig":"api_key","reqd":true,"type":"`$ANY`","index$":1},{"active":true,"kind":"query","name":"date","orig":"date","reqd":true,"type":"`$ANY`","index$":2},{"active":true,"kind":"query","name":"format","orig":"format","reqd":false,"type":"`$ANY`","index$":3},{"active":true,"kind":"query","name":"from","orig":"from","reqd":false,"type":"`$ANY`","index$":4},{"active":true,"kind":"query","name":"to","orig":"to","reqd":false,"type":"`$ANY`","index$":5}]},"contract":{"id":"GET /api/historical/rates","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"getHistoricalRates\",\"parameters\":[{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"description\":\"Date in YYYY-MM-DD format\",\"in\":\"query\",\"name\":\"date\",\"required\":true,\"type\":\"string\"},{\"default\":1,\"description\":\"Amount to convert\",\"in\":\"query\",\"name\":\"amount\",\"type\":\"number\"},{\"default\":\"USD\",\"description\":\"Base currency code\",\"in\":\"query\",\"name\":\"from\",\"type\":\"string\"},{\"description\":\"Target currency code\",\"in\":\"query\",\"name\":\"to\",\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Historical exchange rates retrieved successfully\"},\"400\":{\"description\":\"Invalid date format or missing date\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"404\":{\"description\":\"No data available for the given date\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/historical/rates","segments":[{"lit":"api"},{"lit":"historical"},{"lit":"rates"}],"select":{"exist":["amount","api_key","date","format","from","to"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":1},{"active":true,"args":{"query":[{"active":true,"kind":"query","name":"api_key","orig":"api_key","reqd":true,"type":"`$ANY`","index$":0},{"active":true,"kind":"query","name":"format","orig":"format","reqd":false,"type":"`$ANY`","index$":1}]},"contract":{"id":"GET /api/historical/limits","json":"{\"consumes\":[\"application/json\"],\"operationId\":\"getHistoricalLimits\",\"parameters\":[{\"description\":\"API key for authentication\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Historical data limits retrieved successfully\"},\"401\":{\"description\":\"Missing or invalid API key\"}},\"securitySource\":\"unspecified\"}","source":"swagger2","version":1},"kind":"http","method":"GET","orig":"/api/historical/limits","segments":[{"lit":"api"},{"lit":"historical"},{"lit":"limits"}],"select":{"exist":["api_key","format"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":2}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"historical_currency","name__orig":"historical_currency","Name":"HistoricalCurrency","name_":"historical_currency","name-":"historical-currency","NAME":"HISTORICAL_CURRENCY","index$":2}, {"active":true,"entity":"historical_currency","key$":"BasicHistoricalCurrencyFlow","kind":"basic","name":"BasicHistoricalCurrencyFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"historical_currency_ref01","srcdatavar":"historical_currency_ref01_data","suffix":"_dt0"},"match":{},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-historical_currency_ref01"}}],"index$":0}]}, 'HistoricalCurrency')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID': idmap,
     'UNIRATE_TEST_LIVE': 'FALSE',
@@ -126,7 +118,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.UNIRATE_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['UNIRATE_TEST_HISTORICAL_CURRENCY_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new UnirateSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -138,7 +136,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -151,7 +150,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.UNIRATE_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

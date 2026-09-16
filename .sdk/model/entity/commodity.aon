@@ -56,6 +56,12 @@ main: kit: entity: commodity: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/commodities/historical/rates"
+            json: "{\"consumes\":[\"application/json\"],\"operationId\":\"getHistoricalCommodityRates\",\"parameters\":[{\"description\":\"API key for authentication (Pro tier)\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"description\":\"Date in YYYY-MM-DD format\",\"in\":\"query\",\"name\":\"date\",\"required\":true,\"type\":\"string\"},{\"default\":1,\"description\":\"Amount to convert\",\"in\":\"query\",\"name\":\"amount\",\"type\":\"number\"},{\"default\":\"USD\",\"description\":\"Base symbol\",\"in\":\"query\",\"name\":\"from\",\"type\":\"string\"},{\"description\":\"Target symbol\",\"in\":\"query\",\"name\":\"to\",\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Historical commodity prices retrieved successfully\"},\"400\":{\"description\":\"Invalid date format\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"403\":{\"description\":\"Pro subscription required\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/api/commodities/historical/rates"
           segments: [
@@ -134,6 +140,12 @@ main: kit: entity: commodity: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/commodities/historical/timeseries"
+            json: "{\"consumes\":[\"application/json\"],\"operationId\":\"getCommodityTimeSeries\",\"parameters\":[{\"description\":\"API key for authentication (Pro tier)\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"description\":\"Start date in YYYY-MM-DD format\",\"in\":\"query\",\"name\":\"start_date\",\"required\":true,\"type\":\"string\"},{\"description\":\"End date in YYYY-MM-DD format\",\"in\":\"query\",\"name\":\"end_date\",\"required\":true,\"type\":\"string\"},{\"default\":1,\"description\":\"Amount to multiply prices by\",\"in\":\"query\",\"name\":\"amount\",\"type\":\"number\"},{\"description\":\"Comma-separated list of commodity symbols\",\"in\":\"query\",\"name\":\"symbols\",\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Time series data retrieved successfully\"},\"400\":{\"description\":\"Invalid parameters or date range exceeds 5 years\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"403\":{\"description\":\"Pro subscription required\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/api/commodities/historical/timeseries"
           segments: [
@@ -205,6 +217,12 @@ main: kit: entity: commodity: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/commodities/convert"
+            json: "{\"consumes\":[\"application/json\"],\"operationId\":\"convertCommodity\",\"parameters\":[{\"description\":\"API key for authentication (Pro tier)\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"default\":1,\"description\":\"Amount to convert\",\"in\":\"query\",\"name\":\"amount\",\"type\":\"number\"},{\"default\":\"USD\",\"description\":\"Source symbol\",\"in\":\"query\",\"name\":\"from\",\"type\":\"string\"},{\"description\":\"Target symbol\",\"in\":\"query\",\"name\":\"to\",\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Conversion completed successfully\"},\"400\":{\"description\":\"Invalid amount or conversion failed\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"403\":{\"description\":\"Pro subscription required\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/api/commodities/convert"
           segments: [
@@ -273,6 +291,12 @@ main: kit: entity: commodity: {
               }
             ]
           }
+          contract: {
+            id: "GET /api/commodities/rates"
+            json: "{\"consumes\":[\"application/json\"],\"operationId\":\"getCommodityRates\",\"parameters\":[{\"description\":\"API key for authentication (Pro tier)\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"default\":1,\"description\":\"Amount to convert\",\"in\":\"query\",\"name\":\"amount\",\"type\":\"number\"},{\"default\":\"USD\",\"description\":\"Base symbol\",\"in\":\"query\",\"name\":\"from\",\"type\":\"string\"},{\"description\":\"Target symbol\",\"in\":\"query\",\"name\":\"to\",\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"Commodity prices retrieved successfully\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"403\":{\"description\":\"Pro subscription required\"},\"404\":{\"description\":\"Symbol not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
+          }
           method: "GET"
           orig: "/api/commodities/rates"
           segments: [
@@ -319,6 +343,12 @@ main: kit: entity: commodity: {
                 type: "`$ANY`"
               }
             ]
+          }
+          contract: {
+            id: "GET /api/commodities/symbols"
+            json: "{\"consumes\":[\"application/json\"],\"operationId\":\"listCommoditySymbols\",\"parameters\":[{\"description\":\"API key for authentication (Pro tier)\",\"in\":\"query\",\"name\":\"api_key\",\"required\":true,\"type\":\"string\"},{\"default\":\"json\",\"description\":\"Response format\",\"enum\":[\"json\",\"xml\",\"csv\",\"tsv\"],\"in\":\"query\",\"name\":\"format\",\"type\":\"string\"}],\"produces\":[\"application/json\"],\"protocol\":\"http\",\"responses\":{\"200\":{\"description\":\"A list of available commodity symbols\"},\"401\":{\"description\":\"Missing or invalid API key\"},\"403\":{\"description\":\"Pro subscription required\"}},\"securitySource\":\"unspecified\"}"
+            source: "swagger2"
+            version: 1
           }
           method: "GET"
           orig: "/api/commodities/symbols"
