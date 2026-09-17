@@ -105,12 +105,12 @@ local result, err = client:Commodity():load({ api_key = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/unirate-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/releases) |
-| Python | `voxgig-sdk-unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/releases) |
-| PHP | `voxgig-sdk/unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/releases) |
+| TypeScript | `@voxgig-sdk/unirate-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/tags) |
+| Python | `voxgig-sdk-unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/tags) |
+| PHP | `voxgig-sdk/unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/unirate-sdk/go` | `go get github.com/voxgig-sdk/unirate-sdk/go@latest` |
-| Ruby | `voxgig-sdk-unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/releases) |
-| Lua | `voxgig-sdk-unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/releases) |
+| Ruby | `voxgig-sdk-unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/tags) |
+| Lua | `voxgig-sdk-unirate` | publish pending — [install from git tag](https://github.com/voxgig-sdk/unirate-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/unirate-sdk/go-cli` | `go install github.com/voxgig-sdk/unirate-sdk/go-cli/cmd/unirate@latest` |
 | Go MCP server | `github.com/voxgig-sdk/unirate-sdk/go-mcp` | `go get github.com/voxgig-sdk/unirate-sdk/go-mcp@latest` |
 

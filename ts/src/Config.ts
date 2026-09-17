@@ -127,18 +127,18 @@ class Config {
 
     entity: {
       
-      commodity: {
-      },
-
-      currency: {
-      },
-
-      historical_currency: {
-      },
-
-      vat_rate: {
-      },
-
+        commodity: {
+        },
+  
+        currency: {
+        },
+  
+        historical_currency: {
+        },
+  
+        vat_rate: {
+        },
+  
     }
   }
 
